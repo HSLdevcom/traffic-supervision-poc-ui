@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ol from "openlayers";
 import 'openlayers/css/ol.css';
 import '../styles/Map.css';
