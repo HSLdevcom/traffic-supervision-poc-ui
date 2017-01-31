@@ -8,6 +8,7 @@ import '../styles/TsApp.css';
 import LocalizedStrings from 'react-localization';
 const localisation = {
   fi: {
+    pageTitle: 'Liikenteen valvontatyökalu',
     journeyPattern: 'Reitti',
     stop: 'Pysäkki',
     searchPanel: {
@@ -27,6 +28,7 @@ class TsApp extends Component {
       localisedStrings: new LocalizedStrings(localisation)
     };
     this.state.localisedStrings.setLanguage('fi');
+    document.title = this.state.localisedStrings.pageTitle;
   }
 
   render() {
