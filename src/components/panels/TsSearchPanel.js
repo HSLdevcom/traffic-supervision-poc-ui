@@ -4,12 +4,12 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import AutoComplete from 'material-ui/AutoComplete';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import '../styles/SearchBar.css';
-import '../styles/tools/AllTools.css';
-import '../styles/tools/LeftSide.css';
+import '../../styles/panels/TsSearchPanel.css';
+import '../../styles/panels/AllPanels.css';
+import '../../styles/panels/LeftSide.css';
 
 
-class SearchBar extends Component {
+class TsSearchPanel extends Component {
 
   state = {
     dataSource: [],
@@ -30,11 +30,11 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <Paper className="SearchBar AllTools LeftSide" zDepth={this.constants.paperZDepth}>
+      <Paper className="TsSearchPanel AllPanels LeftSide" zDepth={this.constants.paperZDepth}>
         <Tabs>
           <Tab label={this.props.localisedStrings.journeyPattern}>
             <AutoComplete className="AutoComplete"
-                          hintText={this.props.localisedStrings.searchBar.searchJourneyPatternsHintText}
+                          hintText={this.props.localisedStrings.searchPanel.searchJourneyPatternsHintText}
                           dataSource={this.state.dataSource}
                           onUpdateInput={this.handleUpdateInput}
                           fullWidth={true}
@@ -42,7 +42,7 @@ class SearchBar extends Component {
           </Tab>
           <Tab label={this.props.localisedStrings.stop}>
             <AutoComplete className="AutoComplete"
-                          hintText={this.props.localisedStrings.searchBar.searchStopsHintText}
+                          hintText={this.props.localisedStrings.searchPanel.searchStopsHintText}
                           dataSource={this.state.dataSource}
                           onUpdateInput={this.handleUpdateInput}
                           fullWidth={true}
@@ -60,8 +60,8 @@ class SearchBar extends Component {
   }
 }
 
-SearchBar.childContextTypes = {
+TsSearchPanel.childContextTypes = {
   muiTheme: React.PropTypes.object.isRequired,
 };
 
-export default SearchBar;
+export default TsSearchPanel;

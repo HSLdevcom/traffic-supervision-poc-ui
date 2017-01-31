@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Map from './Map.js';
-import SearchBar from './SearchBar.js';
-import '../styles/App.css';
+import TsMap from './TsMap.js';
+import TsSearchPanel from './panels/TsSearchPanel.js';
+import '../styles/TsApp.css';
 
 //todo; currently here, rethink when redux:ing
 import LocalizedStrings from 'react-localization';
@@ -10,7 +10,7 @@ const localisation = {
   fi: {
     journeyPattern: 'Reitti',
     stop: 'Pysäkki',
-    searchBar: {
+    searchPanel: {
       searchJourneyPatternsHintText: 'Etsi reittejä',
       searchStopsHintText: 'Etsi pysäkkejä'
     }
@@ -18,7 +18,7 @@ const localisation = {
   en: {}
 };
 
-class App extends Component {
+class TsApp extends Component {
 
   constructor() {
     super();
@@ -31,12 +31,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Map/>
-        <SearchBar localisedStrings={this.state.localisedStrings}/>
+      <div className="TsApp">
+        <TsMap/>
+        <TsSearchPanel localisedStrings={this.state.localisedStrings}/>
       </div>
     );
   }
 }
 
-export default App;
+export default TsApp;

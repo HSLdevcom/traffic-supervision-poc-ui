@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import ol from "openlayers";
 import 'openlayers/css/ol.css';
-import '../styles/Map.css';
+import '../styles/TsMap.css';
 
 
-class Map extends Component {
+class TsMap extends Component {
 
   render() {
     return (
-      <div id="map" className="Map"/>
+      <div id="map" className="TsMap"/>
     );
   }
 
@@ -29,4 +29,4 @@ class Map extends Component {
   }
 }
 
-export default Map;
+export default TsMap;

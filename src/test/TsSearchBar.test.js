@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SearchBar from '../components/SearchBar';
+import TsSearchBar from '../components/panels/TsSearchPanel';
 
 // Needed for onTouchTap
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -9,11 +9,11 @@ injectTapEventPlugin();
 import LocalizedStrings from 'react-localization';
 const localisation = {
   fi: {
-    journeyPattern: 'Reitti',
-    stop: 'Pysäkki',
-    searchBar: {
-      searchJourneyPatternsHintText: 'Etsi reittejä',
-      searchStopsHintText: 'Etsi pysäkkejä'
+    journeyPattern: 'A',
+    stop: 'B',
+    searchPanel: {
+      searchJourneyPatternsHintText: 'C',
+      searchStopsHintText: 'D'
     }
   },
   en: {}
@@ -24,5 +24,5 @@ it('renders without crashing', () => {
   localisedStrings.setLanguage('fi');
   const div = document.createElement('div');
 
-  ReactDOM.render(<SearchBar localisedStrings={localisedStrings}/>, div);
+  ReactDOM.render(<TsSearchBar localisedStrings={localisedStrings}/>, div);
 });
