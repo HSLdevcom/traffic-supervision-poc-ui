@@ -3,21 +3,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import TsMap from './TsMap.js';
 import TsSearchPanel from './panels/TsSearchPanel.js';
 import '../styles/TsApp.css';
-
-//todo; currently here, rethink when redux:ing
 import LocalizedStrings from 'react-localization';
-const localisation = {
-  fi: {
-    pageTitle: 'Liikenteen valvontatyökalu',
-    journeyPattern: 'Reitti',
-    stop: 'Pysäkki',
-    searchPanel: {
-      searchJourneyPatternsHintText: 'Etsi reittejä',
-      searchStopsHintText: 'Etsi pysäkkejä'
-    }
-  },
-  en: {}
-};
+import { getLocalisation } from '../Localisation';
 
 class TsApp extends Component {
 
@@ -25,7 +12,7 @@ class TsApp extends Component {
     super();
     injectTapEventPlugin();
     this.state = {
-      localisedStrings: new LocalizedStrings(localisation)
+      localisedStrings: new LocalizedStrings(getLocalisation())
     };
     this.state.localisedStrings.setLanguage('fi');
     document.title = this.state.localisedStrings.pageTitle;
