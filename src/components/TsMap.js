@@ -17,11 +17,14 @@ class TsMap extends Component {
       target: 'map',
       layers: [
         new ol.layer.Tile({
-          source: new ol.source.OSM()
+          source: new ol.source.XYZ({
+            tileSize: [512, 512],
+            url: 'https://api.digitransit.fi/map/v1/hsl-map/{z}/{x}/{y}.png'//todo; from config
+          })
         })
       ],
       view: new ol.View({
-        center: ol.proj.transform([24.945831, 60.192059], 'EPSG:4326', 'EPSG:3857'),
+        center: ol.proj.transform([24.945831, 60.192059], 'EPSG:4326', 'EPSG:3857'),//todo; from config
         zoom: 12
       }),
       controls: []
