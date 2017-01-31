@@ -8,24 +8,29 @@ import '../../styles/panels/TsSearchPanel.css';
 import '../../styles/panels/AllPanels.css';
 import '../../styles/panels/LeftSide.css';
 
+import { getDummyJourneyPatterns } from '../../DummyData'; //todo; replace with real data
 
 class TsSearchPanel extends Component {
 
-  state = {
-    dataSource: [],
-  };
-  constants = {
-    paperZDepth: 3
+  renderJourneyPatterns() {
+    return getDummyJourneyPatterns().map(function(journeyPattern) {
+      return {
+        id: journeyPattern.id,
+        text: journeyPattern.line.designation +
+        " " + journeyPattern.directionOfLine.description +
+        " (" + journeyPattern.directionOfLine.direction + ")" };
+    })
   };
 
-  handleUpdateInput = (value) => {
-    this.setState({
-      dataSource: [
-        value,
-        value + value,
-        value + value + value,
-      ],
-    });
+  constants = {
+    paperZDepth: 3,
+    journeyPatternDataSource: this.renderJourneyPatterns()
+  };
+
+  onJourneyPatternSelected(item) {
+    if (item instanceof Object) {
+      console.log(item)
+    }
   };
 
   render() {
@@ -35,16 +40,16 @@ class TsSearchPanel extends Component {
           <Tab label={this.props.localisedStrings.journeyPattern}>
             <AutoComplete className="AutoComplete"
                           hintText={this.props.localisedStrings.searchPanel.searchJourneyPatternsHintText}
-                          dataSource={this.state.dataSource}
-                          onUpdateInput={this.handleUpdateInput}
+                          dataSource={this.constants.journeyPatternDataSource}
+                          dataSourceConfig={{text: 'text', value: 'id'}}
+                          onNewRequest={this.onJourneyPatternSelected}
                           fullWidth={true}
             />
           </Tab>
           <Tab label={this.props.localisedStrings.stop}>
             <AutoComplete className="AutoComplete"
                           hintText={this.props.localisedStrings.searchPanel.searchStopsHintText}
-                          dataSource={this.state.dataSource}
-                          onUpdateInput={this.handleUpdateInput}
+                          dataSource={[]}
                           fullWidth={true}
             />
           </Tab>
