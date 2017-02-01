@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import TsMap from './TsMap.js';
 import TsSearchPanel from './panels/TsSearchPanel.js';
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import '../styles/TsApp.css';
 import LocalizedStrings from 'react-localization';
 import { getLocalisation } from '../Localisation';
@@ -26,6 +28,16 @@ class TsApp extends Component {
       </div>
     );
   }
+
+  getChildContext() {
+    return {
+      muiTheme: getMuiTheme(baseTheme)
+    }
+  }
 }
+
+TsApp.childContextTypes = {
+  muiTheme: React.PropTypes.object.isRequired,
+};
 
 export default TsApp;
