@@ -8,12 +8,13 @@ import '../../styles/panels/TsSearchPanel.css';
 import '../../styles/panels/AllPanels.css';
 import '../../styles/panels/LeftSide.css';
 
-import { getDummyJourneyPatterns } from '../../DummyData'; //todo; replace with real data
+import {DummyJourneyPatterns} from '../../dummydata/JourneyPatterns'; //todo; replace with real data
+
 
 class TsSearchPanel extends Component {
 
   renderJourneyPatterns() {
-    return getDummyJourneyPatterns().map(function(journeyPattern) {
+    return DummyJourneyPatterns.map(function(journeyPattern) {
       return {
         id: journeyPattern.id,
         text: journeyPattern.line.designation +

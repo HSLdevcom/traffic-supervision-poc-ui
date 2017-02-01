@@ -1,4 +1,4 @@
-const dummyJourneyPatterns = [
+const DummyJourneyPatterns = [
   {
     'id': '234862983467',
     'variant': null,
@@ -19,6 +19,4 @@ const dummyJourneyPatterns = [
   }
 ];
 
-export function getDummyJourneyPatterns() {
-  return dummyJourneyPatterns;
-}
+export { DummyJourneyPatterns };
