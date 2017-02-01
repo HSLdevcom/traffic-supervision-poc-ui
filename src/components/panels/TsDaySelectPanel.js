@@ -4,7 +4,6 @@ import moment from 'moment';
 import TsDayPicker from './TsDayPicker.js';
 import "moment/locale/fi";
 import 'react-day-picker/lib/style.css';
-import '../../styles/panels/AllPanels.css';
 import '../../styles/panels/TsDaySelectPanel.css';
 
 

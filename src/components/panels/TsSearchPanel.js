@@ -5,7 +5,6 @@ import AutoComplete from 'material-ui/AutoComplete';
 import {TsCommonStyle} from '../../TsConfiguration';
 import '../../styles/customized-mui/Tabs.css'
 import '../../styles/panels/TsSearchPanel.css';
-import '../../styles/panels/AllPanels.css';
 import '../../styles/panels/LeftSide.css';
 
 import {DummyJourneyPatterns} from '../../dummydata/JourneyPatterns'; //todo; replace with real data
