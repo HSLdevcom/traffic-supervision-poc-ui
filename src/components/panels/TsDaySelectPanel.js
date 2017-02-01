@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import moment from 'moment';
 import TsDayPicker from './TsDayPicker.js';
 import "moment/locale/fi";
@@ -51,16 +49,6 @@ class TsDaySelectPanel extends Component {
       </div>
     );
   }
-
-  getChildContext() {
-    return {
-      muiTheme: getMuiTheme(baseTheme)
-    }
-  }
 }
-
-TsDaySelectPanel.childContextTypes = {
-  muiTheme: React.PropTypes.object.isRequired,
-};
 
 export default TsDaySelectPanel;
