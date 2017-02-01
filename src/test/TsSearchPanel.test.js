@@ -3,7 +3,7 @@ import {shallow} from 'enzyme';
 import TsSearchPanel from '../components/panels/TsSearchPanel';
 // Needed for localisation
 import LocalizedStrings from 'react-localization';
-import { getLocalisation } from '../Localisation';
+import { getLocalisation } from '../TsLocalisation';
 
 it('renders without crashing', () => {
   let localisedStrings = new LocalizedStrings(getLocalisation());

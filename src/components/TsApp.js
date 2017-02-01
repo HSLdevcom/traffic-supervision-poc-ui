@@ -6,7 +6,7 @@ import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import '../styles/TsApp.css';
 import LocalizedStrings from 'react-localization';
-import { getLocalisation } from '../Localisation';
+import { getLocalisation } from '../TsLocalisation';
 
 class TsApp extends Component {
 
