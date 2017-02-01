@@ -14,6 +14,11 @@ const TsCommonStyle = {
     style: {
       padding: '5px'
     }
+  },
+  tab: {
+    style: {
+      fontSize: '12px'
+    }
   }
 };
 

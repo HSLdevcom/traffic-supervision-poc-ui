@@ -38,7 +38,8 @@ class TsSearchPanel extends Component {
              style={TsCommonStyle.paper.style}
              zDepth={TsCommonStyle.paper.paperZDepth}>
         <Tabs className="Tabs">
-          <Tab className="Tab" label={this.props.localisedStrings.journeyPattern}>
+          <Tab className="Tab" style={TsCommonStyle.tab.style}
+               label={this.props.localisedStrings.journeyPattern}>
             <AutoComplete className="AutoComplete"
                           hintText={this.props.localisedStrings.searchPanel.searchJourneyPatternsHintText}
                           dataSource={this.journeyPatternDataSource}
@@ -47,7 +48,8 @@ class TsSearchPanel extends Component {
                           fullWidth={true}
             />
           </Tab>
-          <Tab className="Tab" label={this.props.localisedStrings.stop}>
+          <Tab className="Tab" style={TsCommonStyle.tab.style}
+               label={this.props.localisedStrings.stop}>
             <AutoComplete className="AutoComplete"
                           hintText={this.props.localisedStrings.searchPanel.searchStopsHintText}
                           dataSource={[]}

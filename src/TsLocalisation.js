@@ -7,6 +7,10 @@ const localisation = {
     searchPanel: {
       searchJourneyPatternsHintText: 'Etsi reittejä',
       searchStopsHintText: 'Etsi pysäkkejä'
+    },
+    journeyPatternPanel: {
+      stopListTabTitle: 'Pysäkkilista',
+      completedDeparturesTabTitle: 'Toteutuneet lähtöajat'
     }
   },
   en: {}
