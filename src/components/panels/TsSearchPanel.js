@@ -15,11 +15,13 @@ class TsSearchPanel extends Component {
 
   renderJourneyPatterns() {
     return DummyJourneyPatterns.map(function(journeyPattern) {
+      const journeyDesc = `${journeyPattern.line.designation}${journeyPattern.variant ? '_' + journeyPattern.variant : ''}
+            ${journeyPattern.directionOfLine.description}
+            (${journeyPattern.directionOfLine.direction})`;
       return {
         id: journeyPattern.id,
-        text: journeyPattern.line.designation +
-        " " + journeyPattern.directionOfLine.description +
-        " (" + journeyPattern.directionOfLine.direction + ")" };
+        text: journeyDesc
+      };
     })
   };
 
