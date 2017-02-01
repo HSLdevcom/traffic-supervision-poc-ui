@@ -4,6 +4,7 @@ import TsMap from './TsMap.js';
 import TsSearchPanel from './panels/TsSearchPanel.js';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import TsDaySelectPanel from './panels/TsDaySelectPanel.js';
 import '../styles/TsApp.css';
 import LocalizedStrings from 'react-localization';
 import { getLocalisation } from '../TsLocalisation';
@@ -25,6 +26,7 @@ class TsApp extends Component {
       <div className="TsApp">
         <TsMap/>
         <TsSearchPanel localisedStrings={this.state.localisedStrings}/>
+        <TsDaySelectPanel localisedStrings={this.state.localisedStrings}/>
       </div>
     );
   }
