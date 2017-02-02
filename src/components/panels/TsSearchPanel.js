@@ -44,6 +44,7 @@ class TsSearchPanel extends Component {
                           hintText={this.props.localisedStrings.searchPanel.searchJourneyPatternsHintText}
                           dataSource={this.journeyPatternDataSource}
                           dataSourceConfig={{text: 'text', value: 'id'}}
+                          filter={(searchText, key) => searchText.length > 0 ? true : false}
                           onNewRequest={this.onJourneyPatternSelected}
                           fullWidth={true}
             />
