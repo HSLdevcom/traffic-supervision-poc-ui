@@ -19,6 +19,9 @@ const TsCommonStyle = {
     style: {
       fontSize: '12px'
     }
+  },
+  table: {
+    displayRowCheckbox: false
   }
 };
 

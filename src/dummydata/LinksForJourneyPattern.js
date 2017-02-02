@@ -266,7 +266,7 @@ const DummyLinksForJourneyPattern =
     'endStop' : {
       'id' : '9022301110295003',
       'code' : '1121124',
-      'name' : 'S&ouml;rn&auml;inen&#x28;M&#x29;',
+      'name' : 'Sörnäinen(M)',
       'location' : {
         'latitude' : 60.18788,
         'longitude' : 24.9632,
@@ -339,7 +339,7 @@ const DummyLinksForJourneyPattern =
     'startStop' : {
       'id' : '9022301110295003',
       'code' : '1121124',
-      'name' : 'S&ouml;rn&auml;inen&#x28;M&#x29;',
+      'name' : 'Sörnäinen(M)',
       'location' : {
         'latitude' : 60.18788,
         'longitude' : 24.9632,
@@ -470,7 +470,7 @@ const DummyLinksForJourneyPattern =
     'endStop' : {
       'id' : '9022301110696001',
       'code' : '1220106',
-      'name' : 'M&auml;kel&auml;nrinne',
+      'name' : 'Mäkelänrinne',
       'location' : {
         'latitude' : 60.19773,
         'longitude' : 24.94984,
@@ -516,7 +516,7 @@ const DummyLinksForJourneyPattern =
     'startStop' : {
       'id' : '9022301110696001',
       'code' : '1220106',
-      'name' : 'M&auml;kel&auml;nrinne',
+      'name' : 'Mäkelänrinne',
       'location' : {
         'latitude' : 60.19773,
         'longitude' : 24.94984,
@@ -528,7 +528,7 @@ const DummyLinksForJourneyPattern =
     'endStop' : {
       'id' : '9022301110551002',
       'code' : '1240109',
-      'name' : 'Py&ouml;r&auml;ilystadion',
+      'name' : 'Pyöräilystadion',
       'location' : {
         'latitude' : 60.20115,
         'longitude' : 24.94529,
@@ -586,7 +586,7 @@ const DummyLinksForJourneyPattern =
     'startStop' : {
       'id' : '9022301110551002',
       'code' : '1240109',
-      'name' : 'Py&ouml;r&auml;ilystadion',
+      'name' : 'Pyöräilystadion',
       'location' : {
         'latitude' : 60.20115,
         'longitude' : 24.94529,
@@ -647,7 +647,7 @@ const DummyLinksForJourneyPattern =
     'endStop' : {
       'id' : '9022301110802001',
       'code' : '1240114',
-      'name' : 'K&auml;til&ouml;opisto',
+      'name' : 'Kätilöopisto',
       'location' : {
         'latitude' : 60.20398,
         'longitude' : 24.95037,
@@ -693,7 +693,7 @@ const DummyLinksForJourneyPattern =
     'startStop' : {
       'id' : '9022301110802001',
       'code' : '1240114',
-      'name' : 'K&auml;til&ouml;opisto',
+      'name' : 'Kätilöopisto',
       'location' : {
         'latitude' : 60.20398,
         'longitude' : 24.95037,
@@ -705,7 +705,7 @@ const DummyLinksForJourneyPattern =
     'endStop' : {
       'id' : '9022301110810001',
       'code' : '1240180',
-      'name' : 'V&auml;h&auml;nkyr&ouml;ntie',
+      'name' : 'Vähänkyröntie',
       'location' : {
         'latitude' : 60.20663,
         'longitude' : 24.94786,
@@ -733,7 +733,7 @@ const DummyLinksForJourneyPattern =
     'startStop' : {
       'id' : '9022301110810001',
       'code' : '1240180',
-      'name' : 'V&auml;h&auml;nkyr&ouml;ntie',
+      'name' : 'Vähänkyröntie',
       'location' : {
         'latitude' : 60.20663,
         'longitude' : 24.94786,
@@ -797,7 +797,7 @@ const DummyLinksForJourneyPattern =
     'endStop' : {
       'id' : '9022301110835001',
       'code' : '1250113',
-      'name' : 'Olympiakyl&auml;',
+      'name' : 'Olympiakylä',
       'location' : {
         'latitude' : 60.21096,
         'longitude' : 24.95256,
@@ -828,7 +828,7 @@ const DummyLinksForJourneyPattern =
     'startStop' : {
       'id' : '9022301110835001',
       'code' : '1250113',
-      'name' : 'Olympiakyl&auml;',
+      'name' : 'Olympiakylä',
       'location' : {
         'latitude' : 60.21096,
         'longitude' : 24.95256,
@@ -877,7 +877,7 @@ const DummyLinksForJourneyPattern =
     'endStop' : {
       'id' : '9022301110831001',
       'code' : '1250107',
-      'name' : 'V&auml;in&ouml;l&auml;nkuja',
+      'name' : 'Väinölänkuja',
       'location' : {
         'latitude' : 60.21474,
         'longitude' : 24.95885,
@@ -923,7 +923,7 @@ const DummyLinksForJourneyPattern =
     'startStop' : {
       'id' : '9022301110831001',
       'code' : '1250107',
-      'name' : 'V&auml;in&ouml;l&auml;nkuja',
+      'name' : 'Väinölänkuja',
       'location' : {
         'latitude' : 60.21474,
         'longitude' : 24.95885,
@@ -1180,7 +1180,7 @@ const DummyLinksForJourneyPattern =
     'endStop' : {
       'id' : '9022301111029001',
       'code' : '1285162',
-      'name' : 'Ver&auml;j&auml;nkorva',
+      'name' : 'Veräjänkorva',
       'location' : {
         'latitude' : 60.22654,
         'longitude' : 24.9729,
@@ -1235,7 +1235,7 @@ const DummyLinksForJourneyPattern =
     'startStop' : {
       'id' : '9022301111029001',
       'code' : '1285162',
-      'name' : 'Ver&auml;j&auml;nkorva',
+      'name' : 'Veräjänkorva',
       'location' : {
         'latitude' : 60.22654,
         'longitude' : 24.9729,
@@ -1247,7 +1247,7 @@ const DummyLinksForJourneyPattern =
     'endStop' : {
       'id' : '9022301111030001',
       'code' : '1285164',
-      'name' : 'Aidasm&auml;ki',
+      'name' : 'Aidasmäki',
       'location' : {
         'latitude' : 60.22964,
         'longitude' : 24.97434,
@@ -1311,7 +1311,7 @@ const DummyLinksForJourneyPattern =
     'startStop' : {
       'id' : '9022301111030001',
       'code' : '1285164',
-      'name' : 'Aidasm&auml;ki',
+      'name' : 'Aidasmäki',
       'location' : {
         'latitude' : 60.22964,
         'longitude' : 24.97434,

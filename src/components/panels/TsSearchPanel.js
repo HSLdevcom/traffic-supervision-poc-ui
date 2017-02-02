@@ -3,6 +3,7 @@ import Paper from 'material-ui/Paper';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import AutoComplete from 'material-ui/AutoComplete';
 import {TsCommonStyle} from '../../TsConfiguration';
+import {TsJourneyPatternParsers} from '../../util/TsParsers';
 import '../../styles/customized-mui/Tabs.css'
 import '../../styles/panels/TsSearchPanel.css';
 import '../../styles/panels/LeftSide.css';
@@ -14,12 +15,9 @@ class TsSearchPanel extends Component {
 
   renderJourneyPatterns() {
     return DummyJourneyPatterns.map(function(journeyPattern) {
-      const journeyDesc = `${journeyPattern.line.designation}${journeyPattern.variant ? '_' + journeyPattern.variant : ''}
-            ${journeyPattern.directionOfLine.description}
-            (${journeyPattern.directionOfLine.direction})`;
       return {
         id: journeyPattern.id,
-        text: journeyDesc
+        text: TsJourneyPatternParsers.getJourneyPatternDescription(journeyPattern)
       };
     })
   };

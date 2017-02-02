@@ -1,5 +1,24 @@
 .TsJourneyPatternPanel {
   top: 100px;
-  height: 400px;
+  height: 600px;
   position: absolute;
+}
+
+.TsJourneyPatternPanel .TsTitle {
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.TsJourneyPatternPanel table * {
+  height: 30px !important;
+}
+
+.TsJourneyPatternPanel table tr td:first-child {
+  width: 30px;
+  padding-right: 0px !important;
+}
+
+.TsJourneyPatternPanel p {/* just for 'not implemented' */
+  font-size: 14px;
 }
