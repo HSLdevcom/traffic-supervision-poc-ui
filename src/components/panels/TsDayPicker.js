@@ -12,6 +12,27 @@ const overlayStyle = {
   boxShadow: '0 2px 5px rgba(0, 0, 0, .15)',
 };
 
+const spanStyle = {
+  display: 'inline-block',
+  width: '18px',
+  padding: '5px',
+};
+
+const dummySpecialDays = [
+  {
+    "date" : "17.04.2017",
+    "name" : "Kiirastorstai"
+  },
+  {
+    "date" : "18.04.2017",
+    "name" : "Pitkäperjantai"
+  },
+  {
+    "date" : "22.02.2017",
+    "name" : "Antin syntymäpäivä"
+  }
+];
+
 class TsDayPicker extends Component {
   constructor(props) {
     super(props);
@@ -20,12 +41,13 @@ class TsDayPicker extends Component {
     this.handleInputFocus = this.handleInputFocus.bind(this);
     this.handleInputBlur = this.handleInputBlur.bind(this);
     this.handleContainerMouseDown = this.handleContainerMouseDown.bind(this);
-  }
+    this.renderDay = this.renderDay.bind(this);
 
-  state = {
-    showOverlay: false,
-    selectedDay: null,
-  };
+    this.state = {
+      showOverlay: false,
+      selectedDay: null,
+    };
+  }
 
   componentWillUnmount() {
     clearTimeout(this.clickTimeout);
@@ -89,31 +111,72 @@ class TsDayPicker extends Component {
     this.input.blur();
   }
 
+  isSpecialDay(day) {
+    let formatedDay = moment(day).format("DD.MM.YYYY");
+    let specialText = "";
+
+    dummySpecialDays.forEach(function(specialDay) {
+      if (formatedDay === specialDay.date) {
+        specialText = specialDay.name;
+      }
+    })
+    if (specialText !== "") {
+      const date = day.getDate();
+      return (
+        <div className="tooltip">
+          <span className="tooltiptext">{ specialText }</span>
+          { date }
+        </div>
+      );
+    } else {
+      return "";
+    }
+  }
+
+  renderDay(day) {
+    let formatedDay = this.isSpecialDay(day);
+    if (formatedDay === "") {
+      formatedDay = day.getDate();;
+    }
+
+    return (
+      <div className="DayElement">
+        { formatedDay }
+      </div>
+    );
+  }
+
   render() {
     return (
       <div onMouseDown={ this.handleContainerMouseDown }>
-        <input
-          className="TsDayPicker"
-          type="text"
-          ref={ (el) => { this.input = el; } }
-          value={ this.props.date }
-          onChange={ this.handleInputChange }
-          onFocus={ this.handleInputFocus }
-          onBlur={ this.handleInputBlur }
-        />
-        { this.state.showOverlay &&
-          <div style={ { position: 'relative' } }>
-            <div style={ overlayStyle }>
-              <DayPicker
-                ref={ (el) => { this.daypicker = el; } }
-                onDayClick={ this.handleDayClick }
-                selectedDays={ day => DateUtils.isSameDay(this.state.selectedDay, day) }
-                localeUtils={ LocaleUtils }
-                locale="fi"
-              />
+        <div className="TsDayPicker">
+          <span style={spanStyle}>
+            {moment(this.props.date, "DD.MM.YYYY").format('ddd')}
+          </span>
+          <input
+            className="datefield"
+            type="text"
+            ref={ (el) => { this.input = el; } }
+            value={ this.props.date }
+            onChange={ this.handleInputChange }
+            onFocus={ this.handleInputFocus }
+            onBlur={ this.handleInputBlur }
+          />
+          { this.state.showOverlay &&
+            <div style={ { position: 'relative' } }>
+              <div style={ overlayStyle }>
+                <DayPicker
+                  ref={ (el) => { this.daypicker = el; } }
+                  onDayClick={ this.handleDayClick }
+                  selectedDays={ day => DateUtils.isSameDay(this.state.selectedDay, day) }
+                  localeUtils={ LocaleUtils }
+                  locale="fi"
+                  renderDay={ this.renderDay }
+                />
+              </div>
             </div>
-          </div>
-        }
+          }
+        </div>
       </div>
     );
   }
