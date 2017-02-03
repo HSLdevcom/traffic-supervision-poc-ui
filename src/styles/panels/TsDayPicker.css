@@ -1,6 +1,9 @@
+.TsDayPicker {
+    position: relative;
+}
 .TsDayPicker .datefield {
   width: 100px;
-  text-align: center;
+  text-indent: 28px;
 }
 
 .TsDayPicker .tooltip {

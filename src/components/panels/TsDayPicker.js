@@ -14,8 +14,11 @@ const overlayStyle = {
 
 const spanStyle = {
   display: 'inline-block',
-  width: '18px',
-  padding: '5px',
+  position: 'absolute',
+  top: '2px',
+  left: '6px',
+  fontWeight: 'bold',
+  fontSize: '14px',
 };
 
 const dummySpecialDays = [
