@@ -3,13 +3,13 @@ import Paper from 'material-ui/Paper';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import AutoComplete from 'material-ui/AutoComplete';
 import {TsCommonStyle} from '../../TsConfiguration';
-import {TsJourneyPatternParsers} from '../../util/TsParsers';
+import {TsJourneyPatternParsers, TsStopParsers} from '../../util/TsParsers';
 import '../../styles/customized-mui/Tabs.css'
 import '../../styles/panels/TsSearchPanel.css';
 import '../../styles/panels/LeftSide.css';
 
 import {DummyJourneyPatterns} from '../../dummydata/JourneyPatterns'; //todo; replace with real data
-
+import {DummyStops} from '../../dummydata/Stops'
 
 class TsSearchPanel extends Component {
 
@@ -22,9 +22,19 @@ class TsSearchPanel extends Component {
     })
   };
 
-  journeyPatternDataSource = this.renderJourneyPatterns();
+  renderStops() {
+    return DummyStops.map(function(stop) {
+      return {
+        id: stop.id,
+        text: TsStopParsers.getStopDescription(stop)
+      };
+    })
+  };
 
-  onJourneyPatternSelected(item) {
+  journeyPatternDataSource = this.renderJourneyPatterns();
+  stopDataSource = this.renderStops();
+
+  onSelected(item) {
     if (item instanceof Object) {
       console.log(item)
     }
@@ -43,7 +53,7 @@ class TsSearchPanel extends Component {
                           dataSource={this.journeyPatternDataSource}
                           dataSourceConfig={{text: 'text', value: 'id'}}
                           filter={(searchText, key) => searchText.length > 0 ? true : false}
-                          onNewRequest={this.onJourneyPatternSelected}
+                          onNewRequest={this.onSelected}
                           fullWidth={true}
             />
           </Tab>
@@ -51,7 +61,10 @@ class TsSearchPanel extends Component {
                label={this.props.localisedStrings.stop}>
             <AutoComplete className="AutoComplete"
                           hintText={this.props.localisedStrings.searchPanel.searchStopsHintText}
-                          dataSource={[]}
+                          dataSource={this.stopDataSource}
+                          dataSourceConfig={{text: 'text', value: 'id'}}
+                          filter={(searchText, key) => searchText.length > 0 ? true : false}
+                          onNewRequest={this.OnSelected}
                           fullWidth={true}
             />
           </Tab>
