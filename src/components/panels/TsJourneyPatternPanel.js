@@ -14,7 +14,16 @@ import {DummyLinksForJourneyPattern} from '../../dummydata/LinksForJourneyPatter
 
 class TsJourneyPatternPanel extends Component {
 
+  constructor(props) {
+    super(props);
+    this.props = props;
+  }
+
   render() {
+    if (!this.props.panelVisible) {
+      return null;
+    }
+
     const journeyPatternDesc = TsJourneyPatternParsers.getJourneyPatternDescription(DummyJourneyPatterns[0]);
     const stops = TsJourneyPatternParsers.linksToLinksStops(DummyLinksForJourneyPattern);
     const tableRows = stops.map((stop) =>
