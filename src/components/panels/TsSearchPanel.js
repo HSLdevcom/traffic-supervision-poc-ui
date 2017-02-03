@@ -13,6 +13,11 @@ import {DummyStops} from '../../dummydata/Stops'
 
 class TsSearchPanel extends Component {
 
+  constructor(props) {
+    super(props);
+    this.onSelected = this.onSelected.bind(this);
+  }
+
   renderJourneyPatterns() {
     return DummyJourneyPatterns.map(function(journeyPattern) {
       return {
@@ -37,6 +42,7 @@ class TsSearchPanel extends Component {
   onSelected(item) {
     if (item instanceof Object) {
       console.log(item)
+      this.props.setJourneyPattermPanelVisibility(true);
     }
   };
 

@@ -16,9 +16,11 @@ class TsApp extends Component {
     super();
     injectTapEventPlugin();
     this.state = {
-      localisedStrings: new LocalizedStrings(getLocalisation())
+      localisedStrings: new LocalizedStrings(getLocalisation()),
+      journeyPatternPanelVisible: false
     };
     this.state.localisedStrings.setLanguage('fi');
+    this.setJourneyPattermPanelVisibility = this.setJourneyPattermPanelVisibility.bind(this);
     document.title = this.state.localisedStrings.pageTitle;
   }
 
@@ -26,11 +28,19 @@ class TsApp extends Component {
     return (
       <div className="TsApp">
         <TsMap/>
-        <TsSearchPanel localisedStrings={this.state.localisedStrings}/>
-        <TsJourneyPatternPanel localisedStrings={this.state.localisedStrings}/>
+        <TsSearchPanel setJourneyPattermPanelVisibility={this.setJourneyPattermPanelVisibility}
+          localisedStrings={this.state.localisedStrings}/>
+        <TsJourneyPatternPanel panelVisible={this.state.journeyPatternPanelVisible}
+          localisedStrings={this.state.localisedStrings}/>
         <TsDaySelectPanel localisedStrings={this.state.localisedStrings}/>
       </div>
     );
+  }
+
+  setJourneyPattermPanelVisibility(panelVisibility) {
+    this.setState({
+      journeyPatternPanelVisible : panelVisibility
+    });
   }
 
   getChildContext() {
