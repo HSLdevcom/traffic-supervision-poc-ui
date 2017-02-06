@@ -32,7 +32,7 @@ const TsJourneyPatternParsers = {
       if (index === 0 && link.startStop && link.startStop.type !== 'VIA_POINT') {
         stops.push(link.startStop)
       } else if (index !== 0 && link.endStop && link.endStop.type !== 'VIA_POINT') {
-        stops.push(link.startStop)
+        stops.push(link.endStop)
       }
     });
     return TsParserUtil.uniqueArray(stops);
