@@ -13,6 +13,7 @@ class TsMap extends Component {
   }
 
   componentDidMount() {
+    const zoomControl = new ol.control.Zoom({ className: 'TsZoomControl' });
     this.map = new ol.Map({
       target: 'map',
       layers: [
@@ -27,7 +28,7 @@ class TsMap extends Component {
         center: ol.proj.transform([24.945831, 60.192059], 'EPSG:4326', 'EPSG:3857'),//todo; from config
         zoom: 12
       }),
-      controls: []
+      controls: [zoomControl]
     });
   }
 }
