@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import ol from "openlayers";
+import ol from 'openlayers';
+import {TsConfiguration} from '../TsConfiguration'
 import 'openlayers/css/ol.css';
 import '../styles/TsMap.css';
 
@@ -20,12 +21,12 @@ class TsMap extends Component {
         new ol.layer.Tile({
           source: new ol.source.XYZ({
             tileSize: [512, 512],
-            url: 'https://api.digitransit.fi/map/v1/hsl-map/{z}/{x}/{y}.png'//todo; from config
+            url: TsConfiguration.map.baseMapUrl
           })
         })
       ],
       view: new ol.View({
-        center: ol.proj.transform([24.945831, 60.192059], 'EPSG:4326', 'EPSG:3857'),//todo; from config
+        center: ol.proj.transform(TsConfiguration.map.initialCenter, 'EPSG:4326', 'EPSG:3857'),
         zoom: 12
       }),
       controls: [zoomControl]

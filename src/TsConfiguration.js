@@ -2,6 +2,12 @@
  * General configuration file, include here what you need for app configuration.
  */
 
+const TsConfiguration = {
+  map: {
+    baseMapUrl: 'https://api.digitransit.fi/map/v1/hsl-map/{z}/{x}/{y}.png',
+    initialCenter: [24.945831, 60.192059]
+  }
+};
 
 /**
  *  Use this to include css changes to common components, especially the js parameters
@@ -25,4 +31,4 @@ const TsCommonStyle = {
   }
 };
 
-export { TsCommonStyle };
+export { TsConfiguration, TsCommonStyle };
