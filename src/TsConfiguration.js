@@ -5,7 +5,14 @@
 const TsConfiguration = {
   map: {
     baseMapUrl: 'https://api.digitransit.fi/map/v1/hsl-map/{z}/{x}/{y}.png',
-    initialCenter: [24.945831, 60.192059]
+    initialCenter: {
+      longitude: 24.945831,
+      latitude: 60.192059
+    },
+    journeyPattern: {
+      linkColor: '#007ac9',
+      linkLineWidth: 8
+    }
   }
 };
 
