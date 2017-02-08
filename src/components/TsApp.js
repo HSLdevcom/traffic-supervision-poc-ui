@@ -4,6 +4,7 @@ import TsMap from './TsMap.js';
 import TsSearchPanel from './panels/TsSearchPanel.js';
 import TsJourneyPatternPanel from './panels/TsJourneyPatternPanel.js';
 import TsDaySelectPanel from './panels/TsDaySelectPanel.js';
+import TsVehicleDataPanel from './panels/TsVehicleDataPanel.js';
 import LocalizedStrings from 'react-localization';
 import { getLocalisation } from '../TsLocalisation';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
@@ -29,6 +30,7 @@ class TsApp extends Component {
         <TsSearchPanel localisedStrings={this.state.localisedStrings}/>
         <TsJourneyPatternPanel localisedStrings={this.state.localisedStrings}/>
         <TsDaySelectPanel localisedStrings={this.state.localisedStrings}/>
+        <TsVehicleDataPanel localisedStrings={this.state.localisedStrings}/>
       </div>
     );
   }

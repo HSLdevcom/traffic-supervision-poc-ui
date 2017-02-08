@@ -1,5 +1,5 @@
 const DummyOperators = [
-    [ {
+    {
       "id" : "7990000000003152",
       "name" : "Amperin Linja-autoliikenne Oy (U)",
       "code" : "0116",

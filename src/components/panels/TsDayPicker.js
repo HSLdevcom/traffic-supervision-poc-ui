@@ -49,6 +49,7 @@ class TsDayPicker extends Component {
     this.state = {
       showOverlay: false,
       selectedDay: null,
+      selectedWeekDay: moment(this.props.date, "DD.MM.YYYY").format('ddd')
     };
   }
 
@@ -96,11 +97,15 @@ class TsDayPicker extends Component {
       this.props.onDateChange(moment(value, "DD.MM.YYYY").format('L'));
       this.setState({
         selectedDay: momentDay.toDate(),
+        selectedWeekDay: momentDay.format('ddd')
       }, () => {
         this.daypicker.showMonth(this.state.selectedDay);
       });
     } else {
-      this.setState({ selectedDay: null });
+      this.setState({
+        selectedDay: null,
+        selectedWeekDay: ""
+      });
       this.props.onDateChange(value);
     }
   }
@@ -108,6 +113,7 @@ class TsDayPicker extends Component {
   handleDayClick(e, day) {
     this.setState({
       selectedDay: day,
+      selectedWeekDay: moment(day, "DD.MM.YYYY").format('ddd'),
       showOverlay: false,
     });
     this.props.onDateChange(moment(day).format('L'));
@@ -154,7 +160,7 @@ class TsDayPicker extends Component {
       <div onMouseDown={ this.handleContainerMouseDown }>
         <div className="TsDayPicker">
           <span style={spanStyle}>
-            {moment(this.props.date, "DD.MM.YYYY").format('ddd')}
+            {this.state.selectedWeekDay}
           </span>
           <input
             className="datefield"

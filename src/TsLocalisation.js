@@ -11,6 +11,13 @@ const localisation = {
     journeyPatternPanel: {
       stopListTabTitle: 'Pysäkkilista',
       completedDeparturesTabTitle: 'Toteutuneet lähtöajat'
+    },
+    vehicleDataSearch: {
+      operatorLabel: 'Liikennöitsijä',
+      vehicleLabel: 'Ajoneuvo',
+      timespanLabel: 'Aikaväli',
+      vehicleInfoLabel: 'Ajoneuvon tiedot',
+      searchButtonTittle: 'Hae'
     }
   },
   en: {}
