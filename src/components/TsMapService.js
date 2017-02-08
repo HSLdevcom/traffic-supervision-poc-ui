@@ -55,6 +55,8 @@ const TsMapConvUtil = {
       const linkPoints = link.linkPoints.map(function(location) {
         return TsMapConvUtil.converToBasemapProjection(location);
       });
+      linkPoints.splice(0, 0, TsMapConvUtil.converToBasemapProjection(link.startStop.location));
+      linkPoints.push(TsMapConvUtil.converToBasemapProjection(link.endStop.location));
 
       const geometryLineString = new ol.Feature({
         geometry: new ol.geom.LineString(linkPoints)
