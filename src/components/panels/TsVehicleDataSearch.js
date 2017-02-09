@@ -50,7 +50,6 @@ export default class TsVehicleDataSearch extends React.Component {
   }
 
   handleTimeStopChange(event) {
-    console.log( event.target.value);
     let stopTime = moment(event.target.value, "HH:mm", true);
     if (stopTime.isValid()) {
       this.setState({timeStopValid: true})
