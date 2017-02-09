@@ -1,0 +1,13 @@
+.TsVehicleOperatingDayJourney {
+  display: flex;
+  padding-bottom: 10px;
+}
+
+.TsVehicleOperatingDayJourney label{
+  margin-right: 5px;
+  display: inline-block;
+  float: left;
+  clear: none;
+  margin-left: 5px;
+  line-height: 36px;
+}

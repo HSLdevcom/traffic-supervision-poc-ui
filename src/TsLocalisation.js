@@ -18,6 +18,10 @@ const localisation = {
       timespanLabel: 'Aikaväli',
       vehicleInfoLabel: 'Ajoneuvon tiedot',
       searchButtonTittle: 'Hae'
+    },
+    vehicleDataAccordion: {
+      vehicleOperatingDayJourneysTitle: 'Liikennevuorokauden lähdöt',
+      vehicleEventsTitle: 'Tapahtumat'
     }
   },
   en: {}
