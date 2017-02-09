@@ -1,7 +1,6 @@
-.TsJourneyPatternPanel {
-  top: 100px;
-  height: 600px;
-  position: absolute;
+.TsJourneyPatternPanel > div {
+  top: 100px !important;
+  padding: 5px;
 }
 
 .TsJourneyPatternPanel .TsTitle {
@@ -21,4 +20,9 @@
 
 .TsJourneyPatternPanel p {/* just for 'not implemented' */
   font-size: 14px;
+}
+
+.TsDrawerPanel .TsDrawerPanelButton {
+  min-width: 0 !important;
+  width: inherit !important;
 }

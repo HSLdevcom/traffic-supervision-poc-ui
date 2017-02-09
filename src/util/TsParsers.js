@@ -19,6 +19,9 @@ const TsJourneyPatternParsers = {
    * Parses descriptive string from journey pattern.
    */
   getJourneyPatternDescription: function(journeyPattern) {
+    if (!journeyPattern.id) {
+      return null;
+    }
     return `${journeyPattern.line.designation}${journeyPattern.variant ? '_' + journeyPattern.variant : ''} ${journeyPattern.directionOfLine.description} (${journeyPattern.directionOfLine.direction})`;
   },
 

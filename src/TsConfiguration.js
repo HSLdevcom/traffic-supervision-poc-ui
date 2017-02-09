@@ -21,6 +21,15 @@ const TsConfiguration = {
  *  like paper's paperZDepth. If this is not enough, you can use also plain css but try to
  *  reserve css-files to specific components needing some extra css. */
 const TsCommonStyle = {
+  tsPanel: {
+    width: '350px',
+    openCloseButton: {
+      width: '20px',
+      position: 'fixed',
+      top: function () { return window.innerHeight / 2 + 'px' },
+      left: function (visible) { return visible ? TsCommonStyle.tsPanel.width : 0}
+    }
+  },
   // used by TsPanel
   paper: {
     paperZDepth: 3,
