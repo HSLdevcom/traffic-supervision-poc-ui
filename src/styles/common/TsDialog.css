@@ -1,0 +1,33 @@
+.TsDialog {
+  width: 400px;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  z-index: 9999;
+}
+
+.TsDialog .TsDialogHeader {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.TsDialog .TsDialogHeader .TsDialogTitle {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.TsDialog .TsDialogHeader .TsDialogCloseButton {
+  float: right;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.TsDialog hr {
+  border-color: #00bcd4;
+}
+
+.TsDialog .TsDialogContent {
+  padding: 10px 15px 15px 10px;
+}
