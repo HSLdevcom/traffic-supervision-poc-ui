@@ -4,7 +4,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import AutoComplete from 'material-ui/AutoComplete';
 import {connect} from 'react-redux';
 import {TsJourneyPatternParsers, TsStopParsers} from '../../util/TsParsers';
-import {TsJourneyPatternActions} from '../../redux/actions'
+import {TsJourneyPatternActions} from '../../redux/TsActions'
 import {TsCommonStyle} from '../../TsConfiguration';
 import '../../styles/customized-mui/Tabs.css'
 import '../../styles/panels/TsSearchPanel.css';
