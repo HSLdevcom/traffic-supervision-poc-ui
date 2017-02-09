@@ -1,0 +1,4 @@
+.TsDrawerPanel .TsDrawerPanelButton {
+  min-width: 0 !important;
+  width: inherit !important;
+}
