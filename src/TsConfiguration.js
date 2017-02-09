@@ -22,7 +22,7 @@ const TsConfiguration = {
  *  reserve css-files to specific components needing some extra css. */
 const TsCommonStyle = {
   tsPanel: {
-    width: 350,
+    width: 400,
     openCloseButton: {
       width: '20px',
       position: 'fixed',
