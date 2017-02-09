@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import TsDrawerPanel from './common/TsDrawerPanel';
+import TsDrawerPanel from '../common/TsDrawerPanel';
 import TsVehicleDataSearch from './TsVehicleDataSearch.js';
 import TsVehicleDataAccordion from './TsVehicleDataAccordion.js';
 import '../../styles/panels/RightSide.css';

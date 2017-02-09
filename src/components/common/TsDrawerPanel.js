@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
-import {TsCommonStyle} from '../../../TsConfiguration';
-import '../../../styles/panels/common/TsDrawerPanel.css'
+import {TsCommonStyle} from '../../TsConfiguration';
+import '../../styles/common/TsDrawerPanel.css'
 
 
 class TsDrawerPanel extends Component {

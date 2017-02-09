@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import {Table, TableBody, TableRow, TableRowColumn} from 'material-ui/Table';
-import TsDrawerPanel from './common/TsDrawerPanel';
+import TsDrawerPanel from '../common/TsDrawerPanel';
 import {connect} from 'react-redux';
 import BusStopMarker from '../../styles/icons/markers/bus_stop.svg'
 import {TsJourneyPatternParsers, TsStopParsers} from '../../util/TsParsers';
