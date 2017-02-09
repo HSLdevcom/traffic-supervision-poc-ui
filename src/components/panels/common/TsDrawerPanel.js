@@ -17,18 +17,37 @@ class TsDrawerPanel extends Component {
   }
 
   render() {
-    const drawerToggleButtonStyle = {
+    var toggleLabel = function (label) {
+      return label === '>' ? '<' : '>';
+    };
+
+    let drawerToggleButtonStyle = {
       width: TsCommonStyle.tsPanel.openCloseButton.width,
       position: TsCommonStyle.tsPanel.openCloseButton.position,
       top: TsCommonStyle.tsPanel.openCloseButton.top(),
-      left: TsCommonStyle.tsPanel.openCloseButton.left(this.props.panelVisible)
     };
+    let buttonLabel = '>';
+    if (this.props.openSecondary) {
+      drawerToggleButtonStyle.right = TsCommonStyle.tsPanel.openCloseButton.leftRight(this.props.panelVisible);
+      if (!this.props.panelVisible) {
+        buttonLabel = toggleLabel(buttonLabel);
+      }
+    } else {
+      drawerToggleButtonStyle.left = TsCommonStyle.tsPanel.openCloseButton.leftRight(this.props.panelVisible);
+      if (this.props.panelVisible) {
+        buttonLabel = toggleLabel(buttonLabel);
+      }
+    }
 
     return (
       <div className="TsDrawerPanel">
-        <RaisedButton className="TsDrawerPanelButton" label={this.props.panelVisible ? '<' : '>'}
+        <RaisedButton className="TsDrawerPanelButton" label={buttonLabel}
                       primary={true} style={drawerToggleButtonStyle} onClick={() => this.togglePanel()}/>
-        <Drawer className="TsDrawerPanelContent" open={this.props.panelVisible} width={350}>{this.props.children}</Drawer>
+        <Drawer className="TsDrawerPanelContent"
+                open={this.props.panelVisible} width={TsCommonStyle.tsPanel.width}
+                openSecondary={this.props.openSecondary}>
+          {this.props.children}
+          </Drawer>
       </div>
     );
   }
