@@ -28,8 +28,38 @@ const TsJourneyPatternReducers = function(state = initialJourneyPatternsState, a
   return state;
 };
 
+/**
+ * Reducers related to stops
+ */
+const initialStopsState = {
+  selected: {
+    stop: {},
+    stopVisits: []
+  }
+};
+const TsStopReducers = function(state = initialStopsState, action) {
+  if (action.type === 'SET_SELECTED_STOP') {
+    return Object.assign({}, state,
+      { selected: {
+        stop: action.stop,
+        stopVisits: action.stopVisits
+      }
+      }
+    )
+  } else if (action.type === 'CLEAR_SELECTED_STOP') {
+    return Object.assign({}, state,
+      { selected: {
+        stop: {},
+        stopVisits: []
+      }
+      }
+    )
+  }
+  return state;
+};
+
 
 /**
  * All reducers API
  */
-export { TsJourneyPatternReducers }
+export { TsJourneyPatternReducers, TsStopReducers }

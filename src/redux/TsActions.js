@@ -20,8 +20,30 @@ const TsJourneyPatternActions = {
   clearSelectedJourneyPattern: clearSelectedJourneyPattern
 };
 
+/**
+ * Actions related to stops
+ */
+const setSelectedStop = function(stop, stopVisits) {
+  return {
+    type: 'SET_SELECTED_STOP',
+    stop: stop,
+    stopVisits: stopVisits
+  }
+};
+
+const clearSelectedStop = function() {
+  return {
+    type: 'CLEAR_SELECTED_STOP'
+  }
+};
+
+const TsStopActions = {
+  setSelectedStop: setSelectedStop,
+  clearSelectedStop: clearSelectedStop
+};
+
 
 /**
  * All actions API
  */
-export { TsJourneyPatternActions }
+export { TsJourneyPatternActions, TsStopActions }
