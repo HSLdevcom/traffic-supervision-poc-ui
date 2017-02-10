@@ -1,0 +1,19 @@
+.TsVehicleEventData {
+  padding-top: 10px;
+  display: inline-block;
+}
+.TsVehicleEventData table * {
+  border-width: thin;
+  border-color: #e3e3e3;
+  border-style: solid !important;
+  background-color: #f5f5f5 !important;
+  height: 30px !important;
+}
+
+.TsVehicleEventData table tr td:first-child {
+  width: 50% !important;
+}
+
+.TsVehicleEventData table thead th:first-child {
+  width: 50% !important;
+}

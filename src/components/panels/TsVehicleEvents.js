@@ -3,15 +3,10 @@ import Checkbox from 'material-ui/Checkbox';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import moment from 'moment';
 import "moment/locale/fi";
+import TsVehicleEventData from './TsVehicleEventData.js'
 import '../../styles/panels/RightSide.css';
 import '../../styles/panels/TsVehicleEvents.css'
 import {DummyVehicleEvents} from '../../dummydata/VehicleEvents.js'
-
-/*
-const tableTimeColumnStyle = {
-  width: '50px',
-};
-*/
 
 class TsVehicleEvents extends Component {
 
@@ -23,11 +18,14 @@ class TsVehicleEvents extends Component {
       busFullChecked: true,
       stopChecked: true,
       doorChecked: true,
-      tlpChecked: true
+      tlpChecked: true,
+
+      selectedEventData: {}
     }
     this.getLocalizedSubType = this.getLocalizedSubType.bind(this);
     this.renderTableRows = this.renderTableRows.bind(this);
     this.isFiltered = this.isFiltered.bind(this);
+    this.handleEventSelected = this.handleEventSelected.bind(this);
   }
 
   getLocalizedSubType(subtype) {
@@ -54,18 +52,30 @@ class TsVehicleEvents extends Component {
     return filtered;
   }
 
+  handleEventSelected(row, column, event) {
+    for (var i in DummyVehicleEvents) {
+      if (DummyVehicleEvents[i].id === event.target.dataset.myRowIdentifier) {
+        this.setState({
+          selectedEventData: DummyVehicleEvents[i].eventData
+        });
+        return;
+      }
+    }
+  }
+
   renderTableRows() {
     return DummyVehicleEvents.map((event) => {
       if (this.isFiltered(event['type'])) {
         return null;
       }
       var subtype = this.getLocalizedSubType(event['subtype']);
+
       return (
        <TableRow key={event['id']}>
-         <TableRowColumn>
+         <TableRowColumn data-my-row-identifier={event['id']}>
            {moment(event['timestamp']).format('HH:mm:ss')}
          </TableRowColumn>
-         <TableRowColumn>
+         <TableRowColumn data-my-row-identifier={event['id']}>
            {subtype}
          </TableRowColumn>
        </TableRow>
@@ -76,6 +86,7 @@ class TsVehicleEvents extends Component {
   handleFilterChecked(filter, event, isInputChecked) {
     let state = {};
     state[filter] = isInputChecked;
+    state['selectedEventData'] = {};
     this.setState(state);
   }
 
@@ -119,7 +130,7 @@ class TsVehicleEvents extends Component {
           />
         </div>
         <div className="EventsTable">
-          <Table>
+          <Table onCellClick={this.handleEventSelected.bind(this)}>
             <TableHeader
               adjustForCheckbox={false}
               displaySelectAll={false}>
@@ -134,6 +145,9 @@ class TsVehicleEvents extends Component {
             </TableBody>
           </Table>
         </div>
+        <TsVehicleEventData
+          localisedStrings={this.props.localisedStrings}
+          eventData={this.state.selectedEventData}/>
       </div>
     );
   }

@@ -36,6 +36,7 @@ const localisation = {
       },
       subtypes: {
         "DRIVER_SIGNON": "Kujettajan kirjautuminen",
+        "DRIVER_SIGNOFF": "Kujettajan poiskirjautuminen",
         "JOURNEY_SIGNON": "Lähdölle kirjautuminen",
         "DOOR_OPEN": "Ovi auki",
         "TICKET_SALE": "Lipunmyynti",
@@ -44,8 +45,19 @@ const localisation = {
         "TLP_REQ": "Liikennevaloetuisuus pyyntö",
         "TLP_ACK": "Liikennevaloetuisuus kuittaus",
         "STOP_ARRIVAL": "Pysäkille saapuminen",
+        "STOP_DEPARTURE": "Pysäkiltä lähteminen",
         "BUS_FULL": "Bussi täynnä",
         "JOURNEY_SIGNOFF": "Lähdöltä poiskirjautuminen"
+      },
+      eventDataTypes: {
+        "driverId": "Kuljettajan tunnus",
+        "lineDesignation": "Linjatunnus",
+        "direction": "Suunta",
+        "journeyNumber": "Reitin numero",
+        "plannedStartTime": "Suunniteltu lähtöaika",
+        "stopCode": "Pysäkki koodi",
+        "stopShortCode": "Pysäkin tunnus",
+        "stopName": "Pysäkkin nimi",
       }
     },
     stopVisitDialog: {
