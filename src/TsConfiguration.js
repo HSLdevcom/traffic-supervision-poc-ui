@@ -43,7 +43,12 @@ const TsCommonStyle = {
     }
   },
   table: {
-    displayRowCheckbox: false
+    displayRowCheckbox: false,
+    header: {
+      enableSelectAll: false,
+      displaySelectAll: false,
+      adjustForCheckbox: false
+    }
   }
 };
 

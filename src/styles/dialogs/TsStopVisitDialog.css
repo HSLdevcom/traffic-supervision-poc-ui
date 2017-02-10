@@ -1,0 +1,35 @@
+.TsStopVisitDialog .TsDialog {
+  width: 500px;
+}
+
+.TsStopVisitDialog .CheckboxTitle {
+  font-size: 15px;
+  font-weight: 500;
+  padding-bottom: 5px;
+}
+
+.TsStopVisitDialog .Checkboxes label {
+  font-size: 14px;
+}
+
+.TsStopVisitDialog .Checkboxes li {
+  display: block;
+  float: left;
+  width: 50%;
+}
+
+.TsStopVisitDialogContent table * {
+  height: 30px !important;
+}
+
+.TsStopVisitDialogContent table tr td:first-child {
+  width: 60px;
+  padding-right: 0px !important;
+  padding-left: 5px !important;
+}
+
+.TsStopVisitDialogContent table thead th:first-child {
+  width: 60px;
+  padding-right: 0px !important;
+  padding-left: 5px !important;
+}

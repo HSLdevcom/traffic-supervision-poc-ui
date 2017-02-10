@@ -2,12 +2,12 @@ const DummyStopVisits =
   {
     'name': 'Rautatientori',
     'code': '1020122',
-    'shortCode' : 'H2050'
+    'shortCode' : 'H2050',
     'visitingJourneyPatterns': [
       {
         'id': '234862983463',
         'variant': null,
-        'directionOfLine': {'direction': '1', 'destination': 'Pajam‰ki'},
+        'directionOfLine': {'direction': '1', 'destination': 'Pajam√§ki'},
         'line': {'designation': '14', 'transportMode': 'BUS'},
         'stopVisits': [
             {
@@ -69,7 +69,7 @@ const DummyStopVisits =
       {
         'id': '234862983467',
         'variant': null,
-        'directionOfLine': {'direction': '1', 'destination': 'Ver‰j‰laakso'},
+        'directionOfLine': {'direction': '1', 'destination': 'Ver√§j√§laakso'},
         'line': {'designation': '65', 'transportMode': 'BUS'},
         'stopVisits': [
             {

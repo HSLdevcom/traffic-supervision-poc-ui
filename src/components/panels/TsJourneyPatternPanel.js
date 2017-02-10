@@ -4,11 +4,15 @@ import {Table, TableBody, TableRow, TableRowColumn} from 'material-ui/Table';
 import TsDrawerPanel from '../common/TsDrawerPanel';
 import {connect} from 'react-redux';
 import BusStopMarker from '../../styles/icons/markers/bus_stop.svg'
+import {TsStopActions} from '../../redux/TsActions';
 import {TsJourneyPatternParsers, TsStopParsers} from '../../util/TsParsers';
 import {TsCommonStyle} from '../../TsConfiguration';
 import '../../styles/panels/LeftSide.css';
 import '../../styles/panels/TsJourneyPatternPanel.css'
 
+// dummy stuff
+import {DummyStops} from '../../dummydata/Stops';
+import {DummyStopVisits} from '../../dummydata/StopVisits';
 
 class TsJourneyPatternPanel extends Component {
 
@@ -18,6 +22,7 @@ class TsJourneyPatternPanel extends Component {
       panelVisible: false
     };
     this.setPanelVisible = this.setPanelVisible.bind(this);
+    this.stopClickedOnTable = this.stopClickedOnTable.bind(this);
   }
 
   setPanelVisible(visible) {
@@ -28,13 +33,18 @@ class TsJourneyPatternPanel extends Component {
     this.setPanelVisible(nextProps.selected.journeyPattern.id !== undefined);
   };
 
+  stopClickedOnTable(rowNumber, columnNumber, event) {
+    console.log(event.target.dataset.stopId);
+    this.props.dispatch(TsStopActions.setSelectedStop(DummyStops[0], DummyStopVisits));// setting dummy stuff
+  };
+
   render() {
     const journeyPatternDesc = TsJourneyPatternParsers.getJourneyPatternDescription(this.props.selected.journeyPattern);
     const stops = TsJourneyPatternParsers.linksToLinksStops(this.props.selected.journeyPatternLinks);
     const tableRows = stops.map((stop) =>
       <TableRow key={stop.id}>
-        <TableRowColumn><img alt="Busstop marker" src={BusStopMarker}/></TableRowColumn>
-        <TableRowColumn>{TsStopParsers.getStopDescription(stop)}</TableRowColumn>
+        <TableRowColumn data-stop-id={stop.id}><img alt="Busstop marker" src={BusStopMarker}/></TableRowColumn>
+        <TableRowColumn data-stop-id={stop.id}>{TsStopParsers.getStopDescription(stop)}</TableRowColumn>
       </TableRow>
     );
 
@@ -44,7 +54,7 @@ class TsJourneyPatternPanel extends Component {
         <Tabs className="Tabs">
           <Tab className="Tab" style={TsCommonStyle.tab.style}
                label={this.props.localisedStrings.journeyPatternPanel.stopListTabTitle}>
-            <Table>
+            <Table onCellClick={this.stopClickedOnTable}>
               <TableBody displayRowCheckbox={TsCommonStyle.table.displayRowCheckbox}>{tableRows}</TableBody>
             </Table>
           </Tab>

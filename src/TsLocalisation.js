@@ -47,6 +47,9 @@ const localisation = {
         "BUS_FULL": "Bussi täynnä",
         "JOURNEY_SIGNOFF": "Lähdöltä poiskirjautuminen"
       }
+    },
+    stopVisitDialog: {
+      journeyPatternCheckboxTitle: "Linjat:"
     }
   },
   en: {}
