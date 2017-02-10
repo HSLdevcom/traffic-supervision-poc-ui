@@ -1,0 +1,18 @@
+.TsVehicleEvents {
+  display: inline-block;
+}
+
+.TsVehicleEvents .CheckboxesLeft {
+  float: left;
+  width: 50%;
+}
+
+.TsVehicleEvents .CheckboxesRight {
+  float: left;
+  width: 50%;
+}
+
+.TsVehicleEvents .EventsTable {
+  float: left;
+  clear: none;
+}

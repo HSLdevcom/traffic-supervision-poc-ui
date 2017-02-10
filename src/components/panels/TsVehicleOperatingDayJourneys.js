@@ -5,10 +5,6 @@ import {DummyVehicleOperatingDayJourneys} from '../../dummydata/VehicleOperating
 
 class TsVehicleOperatingDayJourneys extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     var journeys = DummyVehicleOperatingDayJourneys.map(function(item) {
      return (

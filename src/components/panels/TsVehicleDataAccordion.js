@@ -11,7 +11,7 @@ class TsVehicleDataAccordion extends Component {
     super(props);
     this.state = {
       operatingDayJorneysExpanded : false,
-      eventsExpanded : false
+      eventsExpanded : true
     }
 
     this.operatingDayJourneyExpanseChange = this.operatingDayJourneyExpanseChange.bind(this);
