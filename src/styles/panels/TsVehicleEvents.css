@@ -13,6 +13,23 @@
 }
 
 .TsVehicleEvents .EventsTable {
+  padding-top: 10px;
   float: left;
   clear: none;
+}
+
+.TsVehicleEvents table * {
+  height: 30px !important;
+}
+
+.TsVehicleEvents table tr td:first-child {
+  width: 60px;
+  padding-right: 0px !important;
+  padding-left: 5px !important;
+}
+
+.TsVehicleEvents table thead th:first-child {
+  width: 60px;
+  padding-right: 0px !important;
+  padding-left: 5px !important;
 }

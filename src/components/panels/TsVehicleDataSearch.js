@@ -140,7 +140,7 @@ export default class TsVehicleDataSearch extends React.Component {
                 </td>
               </tr>
               <tr>
-                <td colSpan="5" className="VehicleSearchTableCol">
+                <td colSpan="5" className="VehicleSearchVehicleData">
                   <label className="VehicleInformation">
                     {this.props.localisedStrings.vehicleDataSearch.vehicleInfoLabel}: ABC-213, 5v, C, runkolinja
                   </label>

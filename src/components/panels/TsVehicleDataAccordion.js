@@ -11,7 +11,7 @@ class TsVehicleDataAccordion extends Component {
     super(props);
     this.state = {
       operatingDayJorneysExpanded : false,
-      eventsExpanded : true
+      eventsExpanded : false
     }
 
     this.operatingDayJourneyExpanseChange = this.operatingDayJourneyExpanseChange.bind(this);
@@ -34,7 +34,7 @@ class TsVehicleDataAccordion extends Component {
 
   render() {
     return (
-      <div>
+      <div className="TsVehicleDataAccordion">
         <Card
           expanded={this.state.operatingDayJourneysExpanded}
           onExpandChange={this.operatingDayJourneyExpanseChange}>
@@ -43,7 +43,9 @@ class TsVehicleDataAccordion extends Component {
             actAsExpander={true}
             showExpandableButton={true}
           />
-          <CardText expandable={true}>
+          <CardText
+            className="TsVehicleDataAccordionCardText"
+            expandable={true}>
             <TsVehicleOperatingDayJourneys localisedStrings={this.props.localisedStrings}/>
           </CardText>
         </Card>
@@ -55,7 +57,9 @@ class TsVehicleDataAccordion extends Component {
             actAsExpander={true}
             showExpandableButton={true}
           />
-          <CardText expandable={true}>
+          <CardText
+            className="TsVehicleDataAccordionCardText"
+            expandable={true}>
             <TsVehicleEvents localisedStrings={this.props.localisedStrings}/>
           </CardText>
         </Card>

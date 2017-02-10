@@ -7,9 +7,11 @@ import '../../styles/panels/RightSide.css';
 import '../../styles/panels/TsVehicleEvents.css'
 import {DummyVehicleEvents} from '../../dummydata/VehicleEvents.js'
 
+/*
 const tableTimeColumnStyle = {
   width: '50px',
 };
+*/
 
 class TsVehicleEvents extends Component {
 
@@ -60,7 +62,7 @@ class TsVehicleEvents extends Component {
       var subtype = this.getLocalizedSubType(event['subtype']);
       return (
        <TableRow key={event['id']}>
-         <TableRowColumn style={tableTimeColumnStyle}>
+         <TableRowColumn>
            {moment(event['timestamp']).format('HH:mm:ss')}
          </TableRowColumn>
          <TableRowColumn>
@@ -122,7 +124,7 @@ class TsVehicleEvents extends Component {
               adjustForCheckbox={false}
               displaySelectAll={false}>
               <TableRow>
-                <TableHeaderColumn style={tableTimeColumnStyle}>{this.props.localisedStrings.vehicleEvents.timeLabel}</TableHeaderColumn>
+                <TableHeaderColumn>{this.props.localisedStrings.vehicleEvents.timeLabel}</TableHeaderColumn>
                 <TableHeaderColumn>{this.props.localisedStrings.vehicleEvents.eventLabel}</TableHeaderColumn>
               </TableRow>
             </TableHeader>

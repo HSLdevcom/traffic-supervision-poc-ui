@@ -1,3 +1,8 @@
 .TsVehicleDataAccordion {
   position: relative;
 }
+
+.TsVehicleDataAccordion .TsVehicleDataAccordionCardText {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}

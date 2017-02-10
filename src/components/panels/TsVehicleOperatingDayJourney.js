@@ -32,14 +32,24 @@ class TsVehicleOperatingDayJourney extends Component {
   }
 
   getTimeDifferenceLabel(planned, actual) {
-    var label = moment(actual).format('HH:mm');
-    var differenceSeconds = moment(planned).diff(actual, 'seconds');
-    var differenceMinutes = parseInt(differenceSeconds / 60, 10);
+    let label = moment(actual).format('HH:mm');
+    let differenceSeconds = moment(actual).diff(planned, 'seconds');
+    let differenceMinutes = parseInt(differenceSeconds / 60, 10);
+    let min = "";
+    let sec = "";
 
     differenceSeconds -= differenceMinutes * 60;
-    if(differenceSeconds < 0) differenceSeconds *= -1;
+    if (differenceSeconds < 0) differenceSeconds *= -1;
+    sec = ("0" + differenceSeconds.toString()).slice(-2);
 
-    label += " (" + differenceMinutes + "." + differenceSeconds + ")";
+    if (differenceMinutes < 0) {
+      differenceMinutes *= -1;
+      min = "-" + ("0" + differenceMinutes.toString()).slice(-2);
+    } else {
+      min = "+" + ("0" + differenceMinutes.toString()).slice(-2);
+    }
+    label += " (" + min + ":" + sec + ")";
+
     return label;
   }
 
@@ -57,6 +67,7 @@ class TsVehicleOperatingDayJourney extends Component {
     return (
       <div className="TsVehicleOperatingDayJourney">
         <RaisedButton
+          style={{height:20}}
           label={buttonLabel}
           primary={true}
           onClick={() => this.handleClicked(this.props.data['id'])}/>

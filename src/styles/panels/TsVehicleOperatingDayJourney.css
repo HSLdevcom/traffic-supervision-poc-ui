@@ -1,6 +1,7 @@
 .TsVehicleOperatingDayJourney {
   display: flex;
   padding-bottom: 10px;
+  height: 20px;
 }
 
 .TsVehicleOperatingDayJourney label{
@@ -8,6 +9,6 @@
   display: inline-block;
   float: left;
   clear: none;
-  margin-left: 5px;
-  line-height: 36px;
+  margin-left: 10px;
+  line-height: 20px;
 }
