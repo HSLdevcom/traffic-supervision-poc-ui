@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Checkbox from 'material-ui/Checkbox';
 import {Table, TableHeader, TableHeaderColumn, TableBody, TableRow, TableRowColumn} from 'material-ui/Table';
+import RaisedButton from 'material-ui/RaisedButton';
 import TsDialog from '../common/TsDialog';
 import {TsStopParsers, TsJourneyPatternParsers} from '../../util/TsParsers';
 import {TsCommonStyle} from '../../TsConfiguration';
@@ -17,6 +18,7 @@ class TsStopVisitDialog extends Component {
       uncheckedJourneyPatternIds: []
     };
     this.onCheckBoxChange = this.onCheckBoxChange.bind(this);
+    this.onStreetViewButtonClick = this.onStreetViewButtonClick.bind(this);
   };
 
   onCheckBoxChange(journeyPatternId, event, isInputChecked) {
@@ -34,6 +36,11 @@ class TsStopVisitDialog extends Component {
       });
     }
   };
+
+  onStreetViewButtonClick() {
+    let url = `http://maps.google.com/maps?q=&layer=c&cbll=${this.props.selected.stop.location.latitude},${this.props.selected.stop.location.longitude}`;
+    window.open(url,'_blank');
+  }
 
   render() {
     if (this.props.selected.stop.id === undefined) {
@@ -91,6 +98,10 @@ class TsStopVisitDialog extends Component {
           </TableHeader>
           <TableBody displayRowCheckbox={TsCommonStyle.table.displayRowCheckbox}>{tableRows}</TableBody>
         </Table>
+        <RaisedButton className="TsStreetViewButton" primary={true}
+          style={{height: TsCommonStyle.raisedButton.height}}
+          label={this.props.localisedStrings.stopVisitDialog.googleStreetViewButton}
+          onClick={this.onStreetViewButtonClick}/>
       </div>;
 
     //todo; className gets lost if inside TsDialog, currently needs separate div

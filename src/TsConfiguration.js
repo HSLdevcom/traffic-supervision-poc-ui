@@ -37,6 +37,9 @@ const TsCommonStyle = {
       padding: '5px'
     }
   },
+  raisedButton: {
+    height: '20px'
+  },
   tab: {
     style: {
       fontSize: '12px'

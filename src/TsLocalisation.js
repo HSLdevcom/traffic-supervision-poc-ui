@@ -61,7 +61,8 @@ const localisation = {
       }
     },
     stopVisitDialog: {
-      journeyPatternCheckboxTitle: "Linjat:"
+      journeyPatternCheckboxTitle: "Linjat:",
+      googleStreetViewButton: "Google katunäkymä"
     }
   },
   en: {}
