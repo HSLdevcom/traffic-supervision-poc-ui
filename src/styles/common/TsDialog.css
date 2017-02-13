@@ -1,4 +1,4 @@
-.TsDialog {
+.TsDialog > .react-draggable {
   width: 400px;
   position: fixed;
   top: 20%;

@@ -1,4 +1,4 @@
-.TsStopVisitDialog .TsDialog {
+.TsStopVisitDialog .TsDialog > .react-draggable {
   width: 500px;
 }
 
