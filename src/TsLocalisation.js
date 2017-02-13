@@ -3,6 +3,7 @@ const localisation = {
   fi: {
     pageTitle: 'Liikenteen valvontatyökalu',
     journeyPattern: 'Reitti',
+    line: 'Linja',
     stop: 'Pysäkki',
     searchPanel: {
       searchJourneyPatternsHintText: 'Etsi reittejä',
@@ -63,6 +64,9 @@ const localisation = {
     stopVisitDialog: {
       journeyPatternCheckboxTitle: "Linjat:",
       googleStreetViewButton: "Google katunäkymä"
+    },
+    journeyDataPanel: {
+      startTime: 'Lähtöaika'
     }
   },
   en: {}

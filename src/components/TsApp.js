@@ -3,6 +3,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import TsMap from './TsMap.js';
 import TsSearchPanel from './panels/TsSearchPanel.js';
 import TsJourneyPatternPanel from './panels/TsJourneyPatternPanel.js';
+import TsJourneyDataPanel from './panels/journeydata/TsJourneyDataPanel';
 import TsDaySelectPanel from './panels/TsDaySelectPanel.js';
 import TsVehicleDataPanel from './panels/vehicle/TsVehicleDataPanel.js';
 import TsDialogHandler from './dialogs/TsDialogHandler';
@@ -30,6 +31,7 @@ class TsApp extends Component {
         <TsMap localisedStrings={this.state.localisedStrings}/>
         <TsSearchPanel localisedStrings={this.state.localisedStrings}/>
         <TsJourneyPatternPanel localisedStrings={this.state.localisedStrings}/>
+        <TsJourneyDataPanel localisedStrings={this.state.localisedStrings}/>
         <TsDaySelectPanel localisedStrings={this.state.localisedStrings}/>
         <TsVehicleDataPanel localisedStrings={this.state.localisedStrings}/>
         <TsDialogHandler localisedStrings={this.state.localisedStrings}/>
