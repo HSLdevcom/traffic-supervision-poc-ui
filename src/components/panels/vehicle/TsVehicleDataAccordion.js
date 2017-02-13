@@ -10,7 +10,7 @@ class TsVehicleDataAccordion extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      operatingDayJorneysExpanded : false,
+      operatingDayJorneysExpanded : true,
       eventsExpanded : false
     }
 
@@ -33,10 +33,14 @@ class TsVehicleDataAccordion extends Component {
   }
 
   render() {
+    if (this.props.vehicleData === null) {
+      return null;
+    }
     return (
       <div className="TsVehicleDataAccordion">
         <Card
           expanded={this.state.operatingDayJourneysExpanded}
+          initiallyExpanded={true}
           onExpandChange={this.operatingDayJourneyExpanseChange}>
           <CardHeader
             title={this.props.localisedStrings.vehicleDataAccordion.vehicleOperatingDayJourneysTitle}
@@ -46,7 +50,9 @@ class TsVehicleDataAccordion extends Component {
           <CardText
             className="TsVehicleDataAccordionCardText"
             expandable={true}>
-            <TsVehicleOperatingDayJourneys localisedStrings={this.props.localisedStrings}/>
+            <TsVehicleOperatingDayJourneys
+              localisedStrings={this.props.localisedStrings}
+              vehicleData={this.props.vehicleData}/>
           </CardText>
         </Card>
         <Card
@@ -60,7 +66,9 @@ class TsVehicleDataAccordion extends Component {
           <CardText
             className="TsVehicleDataAccordionCardText"
             expandable={true}>
-            <TsVehicleEvents localisedStrings={this.props.localisedStrings}/>
+            <TsVehicleEvents
+              localisedStrings={this.props.localisedStrings}
+              vehicleData={this.props.vehicleData}/>
           </CardText>
         </Card>
       </div>

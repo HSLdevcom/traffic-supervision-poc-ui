@@ -10,7 +10,7 @@ class TsVehicleOperatingDayJourneys extends Component {
      return (
        <TsVehicleOperatingDayJourney key={item['id']} data={item}/>
      )
-    });
+    }, this);
 
     return (
       <div>

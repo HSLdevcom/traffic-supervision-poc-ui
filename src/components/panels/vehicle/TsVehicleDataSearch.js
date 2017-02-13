@@ -3,6 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import moment from 'moment';
 import "moment/locale/fi";
 import {DummyOperators} from '../../../dummydata/Operators.js'
+import {DummyVehicleBasicData} from '../../../dummydata/VehicleBasicData.js'
 import '../../../styles/panels/vehicle/TsVehicleDataSearch.css';
 
 export default class TsVehicleDataSearch extends React.Component {
@@ -10,19 +11,21 @@ export default class TsVehicleDataSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedOperator: "",
+      selectedOperator: DummyOperators[0].id,
       selectedVehicleId: "",
       timeStart: "",
       timeStop: "",
       timeStartValid: false,
       timeStopValid: false,
-      searchButtonDisabled: true
+      showVehicleData: false
     };
 
     this.handleOperatorChange = this.handleOperatorChange.bind(this);
     this.handleVehicleIdChange = this.handleVehicleIdChange.bind(this);
     this.handleTimeStartChange = this.handleTimeStartChange.bind(this);
     this.handleTimeStopChange = this.handleTimeStopChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderVehicleData = this.renderVehicleData.bind(this);
   }
 
   handleOperatorChange(event) {
@@ -60,8 +63,43 @@ export default class TsVehicleDataSearch extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log("Submitting my search!");
     event.preventDefault();
+    let operatorData = {};
+
+    for (let i = 0; i < DummyOperators.length; i++) {
+      if (DummyOperators[i].id === this.state.selectedOperator) {
+        operatorData = DummyOperators[i];
+      }
+    }
+
+    this.props.handleVehicleDataSelected({
+      operator: operatorData,
+      start: this.state.timeStart,
+      stop: this.state.timeStop
+    });
+    this.setState({
+      showVehicleData : true
+    });
+  }
+
+  renderVehicleData() {
+    if (this.state.showVehicleData === true) {
+      return (
+        <tr>
+          <td colSpan="5" className="VehicleSearchVehicleData">
+            <label className="VehicleInformation">
+              {this.props.localisedStrings.vehicleDataSearch.vehicleInfoLabel}:
+            </label>
+            <label className="VehicleBasicData">
+              {DummyVehicleBasicData.sideNumber},
+              {DummyVehicleBasicData.age}v,
+              {DummyVehicleBasicData.vehicleClass}
+            </label>
+          </td>
+        </tr>
+      );
+    }
+    return null;
   }
 
   render() {
@@ -139,13 +177,7 @@ export default class TsVehicleDataSearch extends React.Component {
                     style={{height: '21px', float: 'right'}}/>
                 </td>
               </tr>
-              <tr>
-                <td colSpan="5" className="VehicleSearchVehicleData">
-                  <label className="VehicleInformation">
-                    {this.props.localisedStrings.vehicleDataSearch.vehicleInfoLabel}: ABC-213, 5v, C, runkolinja
-                  </label>
-                </td>
-              </tr>
+              {this.renderVehicleData()}
             </tbody>
           </table>
         </form>

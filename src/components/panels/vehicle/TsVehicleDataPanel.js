@@ -10,25 +10,36 @@ class TsVehicleDataPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      panelVisible: false
+      panelVisible: false,
+      vehicleData: null
     };
     this.setPanelVisible = this.setPanelVisible.bind(this);
+    this.handleVehicleDataSelected = this.handleVehicleDataSelected.bind(this);
   }
 
   setPanelVisible(visible) {
     this.setState({ panelVisible: visible });
   }
 
+  handleVehicleDataSelected(data) {
+    this.setState({
+      vehicleData: data
+    });
+  }
   render() {
 
     const contentInsideDrawer =
     <div>
-      <TsVehicleDataSearch localisedStrings={this.props.localisedStrings}/>
-      <TsVehicleDataAccordion localisedStrings={this.props.localisedStrings}/>
+      <TsVehicleDataSearch
+        localisedStrings={this.props.localisedStrings}
+        handleVehicleDataSelected={this.handleVehicleDataSelected}/>
+      <TsVehicleDataAccordion
+        localisedStrings={this.props.localisedStrings}
+        vehicleData={this.state.vehicleData}/>
     </div>;
 
     return (
-      <div className="TsOperatorPanel">
+      <div className="TsVehicleDataPanel">
         <TsDrawerPanel children={contentInsideDrawer}
                        openSecondary={true}
                        panelVisible={this.state.panelVisible}
