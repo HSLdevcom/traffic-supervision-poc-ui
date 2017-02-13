@@ -5,6 +5,7 @@ import LocaleUtils from "react-day-picker/moment";
 import 'react-day-picker/lib/style.css';
 import "moment/locale/fi";
 import '../../styles/panels/TsDayPicker.css';
+import {DummySpecialDays} from '../../dummydata/SpecialDays.js'
 
 const overlayStyle = {
   position: 'absolute',
@@ -20,21 +21,6 @@ const spanStyle = {
   fontWeight: 'bold',
   fontSize: '14px',
 };
-
-const dummySpecialDays = [
-  {
-    "date" : "17.04.2017",
-    "name" : "Kiirastorstai"
-  },
-  {
-    "date" : "18.04.2017",
-    "name" : "Pitkäperjantai"
-  },
-  {
-    "date" : "22.02.2017",
-    "name" : "Antin syntymäpäivä"
-  }
-];
 
 class TsDayPicker extends Component {
   constructor(props) {
@@ -124,7 +110,7 @@ class TsDayPicker extends Component {
     let formatedDay = moment(day).format("DD.MM.YYYY");
     let specialText = "";
 
-    dummySpecialDays.forEach(function(specialDay) {
+    DummySpecialDays.forEach(function(specialDay) {
       if (formatedDay === specialDay.date) {
         specialText = specialDay.name;
       }

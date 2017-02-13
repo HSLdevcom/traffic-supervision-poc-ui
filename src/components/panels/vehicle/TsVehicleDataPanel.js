@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import TsDrawerPanel from '../common/TsDrawerPanel';
+import TsDrawerPanel from '../../common/TsDrawerPanel';
 import TsVehicleDataSearch from './TsVehicleDataSearch.js';
 import TsVehicleDataAccordion from './TsVehicleDataAccordion.js';
-import '../../styles/panels/RightSide.css';
-import '../../styles/panels/TsVehicleDataPanel.css'
+import '../../../styles/panels/RightSide.css';
+import '../../../styles/panels/vehicle/TsVehicleDataPanel.css'
 
 class TsVehicleDataPanel extends Component {
 

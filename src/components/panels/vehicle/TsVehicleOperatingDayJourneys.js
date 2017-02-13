@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TsVehicleOperatingDayJourney from './TsVehicleOperatingDayJourney.js'
-import '../../styles/panels/RightSide.css';
-import {DummyVehicleOperatingDayJourneys} from '../../dummydata/VehicleOperatingDayJourneys.js'
+import '../../../styles/panels/RightSide.css';
+import {DummyVehicleOperatingDayJourneys} from '../../../dummydata/VehicleOperatingDayJourneys.js'
 
 class TsVehicleOperatingDayJourneys extends Component {
 

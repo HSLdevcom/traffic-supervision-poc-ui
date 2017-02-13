@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
-import '../../styles/panels/TsVehicleEventData.css'
+import '../../../styles/panels/vehicle/TsVehicleEventData.css'
 
 class TsVehicleEventData extends Component {
 

@@ -4,9 +4,9 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 import moment from 'moment';
 import "moment/locale/fi";
 import TsVehicleEventData from './TsVehicleEventData.js'
-import '../../styles/panels/RightSide.css';
-import '../../styles/panels/TsVehicleEvents.css'
-import {DummyVehicleEvents} from '../../dummydata/VehicleEvents.js'
+import '../../../styles/panels/RightSide.css';
+import '../../../styles/panels/vehicle/TsVehicleEvents.css'
+import {DummyVehicleEvents} from '../../../dummydata/VehicleEvents.js'
 
 class TsVehicleEvents extends Component {
 

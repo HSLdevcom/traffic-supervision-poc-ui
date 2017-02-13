@@ -2,8 +2,8 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import moment from 'moment';
 import "moment/locale/fi";
-import {DummyOperators} from '../../dummydata/Operators.js'
-import '../../styles/panels/TsVehicleDataSearch.css';
+import {DummyOperators} from '../../../dummydata/Operators.js'
+import '../../../styles/panels/vehicle/TsVehicleDataSearch.css';
 
 export default class TsVehicleDataSearch extends React.Component {
 

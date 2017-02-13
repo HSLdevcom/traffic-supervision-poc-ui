@@ -4,7 +4,7 @@ import TsMap from './TsMap.js';
 import TsSearchPanel from './panels/TsSearchPanel.js';
 import TsJourneyPatternPanel from './panels/TsJourneyPatternPanel.js';
 import TsDaySelectPanel from './panels/TsDaySelectPanel.js';
-import TsVehicleDataPanel from './panels/TsVehicleDataPanel.js';
+import TsVehicleDataPanel from './panels/vehicle/TsVehicleDataPanel.js';
 import TsDialogHandler from './dialogs/TsDialogHandler';
 import LocalizedStrings from 'react-localization';
 import { getLocalisation } from '../TsLocalisation';

@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import moment from 'moment';
 import "moment/locale/fi";
-import '../../styles/panels/RightSide.css';
-import '../../styles/panels/TsVehicleOperatingDayJourney.css';
+import '../../../styles/panels/RightSide.css';
+import '../../../styles/panels/vehicle/TsVehicleOperatingDayJourney.css';
 
 class TsVehicleOperatingDayJourney extends Component {
 

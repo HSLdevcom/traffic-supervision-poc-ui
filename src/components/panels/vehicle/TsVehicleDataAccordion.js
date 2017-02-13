@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import TsVehicleOperatingDayJourneys from './TsVehicleOperatingDayJourneys.js'
 import TsVehicleEvents from './TsVehicleEvents.js'
-import '../../styles/panels/RightSide.css';
-import '../../styles/panels/TsVehicleDataAccordion.css'
+import '../../../styles/panels/RightSide.css';
+import '../../../styles/panels/vehicle/TsVehicleDataAccordion.css'
 
 class TsVehicleDataAccordion extends Component {
 
