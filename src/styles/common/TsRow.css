@@ -1,0 +1,24 @@
+.TsRow,
+.TsRowTitle,
+.TsRowContent,
+.TsRowContentItem {
+  display: inline;
+  font-size: 14px;
+}
+
+.TsRow {
+  padding: 10px !important;
+}
+
+.TsRowContent {
+  position: absolute;
+  left: 25%;
+}
+
+.TsRowContent .TsRowContentItem {
+  margin-right: 5px;
+}
+
+.TsRowDivider {
+  margin-top: 5px !important;
+}
