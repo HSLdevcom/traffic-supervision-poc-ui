@@ -10,10 +10,17 @@ const TsConfiguration = {
       latitude: 60.192059
     },
     journeyPattern: {
-      linkColor: '#007ac9',
+      linkColor: 'rgba(0,64,255,0.6)',
+      linkLineWidth: 8
+    },
+    vehicleLocation: {
+      linkColor: 'red',
       linkLineWidth: 8
     }
-  }
+  },
+  // Time difference in seconds between vehicle location points before
+  // the journey is cut to parts
+  vehicleLocationDiffMax: 60
 };
 
 /**

@@ -1,4 +1,6 @@
 import ol from 'openlayers';
+import moment from 'moment';
+import "moment/locale/fi";
 import {TsJourneyPatternParsers} from '../util/TsParsers';
 import BusStopMarker from '../styles/icons/markers/bus_stop.svg'
 import {TsConfiguration} from '../TsConfiguration'
@@ -77,6 +79,70 @@ const TsMapConvUtil = {
 
     return TsMapConvUtil.convertJourneyPatternLinkStopsToGeometryPoints(journeyPatternLinks).concat(
       TsMapConvUtil.convertJourneyPatternLinksToGeometryLineStrings(journeyPatternLinks));
+  },
+
+  /**
+   * Vehicle location related utils
+   */
+
+  convertVehicleLocationsToGeometryLineStrings: function(vehicleLocations) {
+    return vehicleLocations.map(function(part) {
+      const journeyPoints = part.map(function(location) {
+        return TsMapConvUtil.converToBasemapProjection(location);
+      });
+
+      const geometryLineString = new ol.Feature({
+        geometry: new ol.geom.LineString(journeyPoints)
+      });
+
+      geometryLineString.setStyle(
+        new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: TsConfiguration.map.vehicleLocation.linkColor,
+            width: TsConfiguration.map.vehicleLocation.linkLineWidth
+          })
+      }));
+      return geometryLineString;
+    });
+  },
+
+  convertLocationToGeometryPointText: function(location) {
+    let textStyle = new ol.style.Style({
+      text: new ol.style.Text({
+        text: moment(location.timestamp).format("HH:mm"),
+        fontFamily: 'Rototo,sans-serif',
+        scale: 1.5,
+        offsetX: -40,
+        stroke: new ol.style.Stroke({
+          width: 1
+        })
+      }),
+    });
+
+    const textFeature = new ol.Feature({
+      geometry: new ol.geom.Point(TsMapConvUtil.converToBasemapProjection(location))
+    });
+    textFeature.setStyle(textStyle);
+
+    return textFeature;
+  },
+
+  convertVehicleLocationsToGeometryPointText: function(vehicleLocations) {
+    return vehicleLocations.map(function(locations) {
+      return [TsMapConvUtil.convertLocationToGeometryPointText(locations[0]),
+        TsMapConvUtil.convertLocationToGeometryPointText(locations[locations.length - 1])];
+    });
+  },
+
+  convertVehicleLocationsToGeometryFeatures: function(vehicleLocations) {
+    let features = TsMapConvUtil.convertVehicleLocationsToGeometryLineStrings(vehicleLocations);
+    let labels = TsMapConvUtil.convertVehicleLocationsToGeometryPointText(vehicleLocations);
+    labels.forEach(function(point) {
+      features = features.concat(point[0]);
+      features = features.concat(point[1]);
+    });
+
+    return features;
   }
 };
 
@@ -93,7 +159,11 @@ class TsMapService {
         url: TsConfiguration.map.baseMapUrl
       })
     });
-    this.featureLayer = new ol.layer.Vector({
+    this.journeyPatternStopLayer = new ol.layer.Vector({
+      source: new ol.source.Vector(),
+      zIndex: 40
+    });
+    this.vehicleJourneyLocationLayer = new ol.layer.Vector({
       source: new ol.source.Vector(),
       zIndex: 30
     });
@@ -108,18 +178,19 @@ class TsMapService {
       target: mapTargetTag,
       layers: [
         this.baseMapLayer,
-        this.featureLayer
+        this.journeyPatternStopLayer,
+        this.vehicleJourneyLocationLayer
       ],
       view: this.view,
       controls: [this.zoomControl]
     });
   };
 
-  setFeatures(features) {
+  setFeatures(layer, features) {
     if (!features || features.length === 0) {
-      this.featureLayer.getSource().clear();
+      layer.getSource().clear();
     } else {
-      this.featureLayer.getSource().addFeatures(features);
+      layer.getSource().addFeatures(features);
     }
   }
 }

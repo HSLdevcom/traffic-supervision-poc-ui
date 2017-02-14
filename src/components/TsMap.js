@@ -17,8 +17,14 @@ class TsMap extends Component {
 
   render() {
     this.map.setFeatures(
+      this.map.journeyPatternStopLayer,
       TsMapConvUtil.convertJourneyPatternToGeometryFeatures(
         this.props.selected.journeyPatternLinks));
+
+    this.map.setFeatures(
+      this.map.vehicleJourneyLocationLayer,
+      TsMapConvUtil.convertVehicleLocationsToGeometryFeatures(
+        this.props.selectedVehicleLocations.vehicleLocations));
 
     return (
       <div id="map" className="TsMap"/>
@@ -28,7 +34,8 @@ class TsMap extends Component {
 
 const mapStateToProps = function(store) {
   return {
-    selected: store.journeyPatternsState.selected
+    selected: store.journeyPatternsState.selected,
+    selectedVehicleLocations: store.vehicleLocationState.selected
   };
 };
 export default connect(mapStateToProps)(TsMap);

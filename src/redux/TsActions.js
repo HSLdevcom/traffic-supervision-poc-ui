@@ -42,8 +42,28 @@ const TsStopActions = {
   clearSelectedStop: clearSelectedStop
 };
 
+/**
+ * Actions related to vehicle location
+ */
+const setSelectedVehicleLocations = function(vehicleLocations) {
+  return {
+    type: 'SET_SELECTED_VEHICLE_LOCATIONS',
+    vehicleLocations: vehicleLocations
+  }
+};
+
+const clearSelectedVehicleLocations = function() {
+  return {
+    type: 'CLEAR_SELECTED_VEHICLE_LOCATIONS'
+  }
+};
+
+const TsVehicleLocationActions = {
+  setSelectedVehicleLocations: setSelectedVehicleLocations,
+  clearSelectedVehicleLocations: clearSelectedVehicleLocations
+};
 
 /**
  * All actions API
  */
-export { TsJourneyPatternActions, TsStopActions }
+export { TsJourneyPatternActions, TsStopActions, TsVehicleLocationActions }

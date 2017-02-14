@@ -58,8 +58,35 @@ const TsStopReducers = function(state = initialStopsState, action) {
   return state;
 };
 
+/**
+ * Reducers related to vehicle location
+ */
+const initialVehicleLocationState = {
+  selected: {
+    vehicleLocations: []
+  }
+};
+const TsVechicleLocationReducers = function(state = initialVehicleLocationState, action) {
+  if (action.type === 'SET_SELECTED_VEHICLE_LOCATIONS') {
+    return Object.assign({}, state,
+      { selected: {
+        vehicleLocations: action.vehicleLocations
+      }
+      }
+    )
+  } else if (action.type === 'CLEAR_SELECTED_VEHICLE_LOCATIONS') {
+    return Object.assign({}, state,
+      { selected: {
+        vehicleLocations: []
+      }
+      }
+    )
+  }
+
+  return state;
+};
 
 /**
  * All reducers API
  */
-export { TsJourneyPatternReducers, TsStopReducers }
+export { TsJourneyPatternReducers, TsStopReducers, TsVechicleLocationReducers }

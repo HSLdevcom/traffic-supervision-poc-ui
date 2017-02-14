@@ -2,11 +2,15 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import moment from 'moment';
 import "moment/locale/fi";
+import {connect} from 'react-redux';
+import {TsVehicleLocationActions} from '../../../redux/TsActions';
+import {TsConfiguration} from '../../../TsConfiguration.js'
 import {DummyOperators} from '../../../dummydata/Operators.js'
 import {DummyVehicleBasicData} from '../../../dummydata/VehicleBasicData.js'
+import {DummyVehicleLocationData} from '../../../dummydata/VehicleLocationData.js'
 import '../../../styles/panels/vehicle/TsVehicleDataSearch.css';
 
-export default class TsVehicleDataSearch extends React.Component {
+class TsVehicleDataSearch extends React.Component {
 
   constructor(props) {
     super(props);
@@ -62,6 +66,31 @@ export default class TsVehicleDataSearch extends React.Component {
     this.setState({timeStop: event.target.value});
   }
 
+  processVehicleLocations() {
+    if (DummyVehicleLocationData < 2) return;
+
+    let journeys = [];
+    let journey = [];
+    let previousLocation = DummyVehicleLocationData[0];
+
+    journey.push(DummyVehicleLocationData[0]);
+
+    for (let i = 1; i < DummyVehicleLocationData.length; i++) {
+      let timeDiff = moment(DummyVehicleLocationData[i].timestamp).diff(previousLocation.timestamp, 'seconds');
+      if (timeDiff > TsConfiguration.vehicleLocationDiffMax) {
+        journeys.push(journey);
+        journey = [];
+      }
+      journey.push(DummyVehicleLocationData[i]);
+      previousLocation = DummyVehicleLocationData[i];
+    }
+    journeys.push(journey);
+
+    this.props.dispatch(
+      TsVehicleLocationActions.setSelectedVehicleLocations(
+        journeys));
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     let operatorData = {};
@@ -71,6 +100,8 @@ export default class TsVehicleDataSearch extends React.Component {
         operatorData = DummyOperators[i];
       }
     }
+
+    this.processVehicleLocations();
 
     this.props.handleVehicleDataSelected({
       operator: operatorData,
@@ -185,3 +216,11 @@ export default class TsVehicleDataSearch extends React.Component {
     );
   }
 }
+
+const mapStateToProps = function(store) {
+  return {
+    setSelectedVehicleLocation: store.vehicleLocationState.selected
+  };
+};
+
+export default connect(mapStateToProps)(TsVehicleDataSearch)
