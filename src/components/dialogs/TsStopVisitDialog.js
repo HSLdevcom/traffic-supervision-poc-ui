@@ -9,6 +9,32 @@ import {TsCommonStyle} from '../../TsConfiguration';
 import '../../styles/TsApp.css'
 import '../../styles/dialogs/TsStopVisitDialog.css';
 
+const TsStopVisitParser = {
+
+  splitTimeToArray: function (timeString) {
+    return timeString.split(":");
+  },
+
+  parseVisitDelayString: function (visit) {
+    const delayInMinutes = visit.delay / 60;
+    return `(${delayInMinutes > 0 ? '+' : ''}${parseInt(delayInMinutes, 10)})`;
+  },
+
+  findStopVisitsOnSameHour: function (currentIndex, allStopVisits) {
+    let sameHourStopVisits = [];
+    const currentStopVisit = allStopVisits[currentIndex];
+    for (let i = currentIndex; i < allStopVisits.length; i++) {
+      const candidateStopVisit = allStopVisits[i];
+      if (TsStopVisitParser.splitTimeToArray(currentStopVisit.plannedTime)[0] ===
+            TsStopVisitParser.splitTimeToArray(candidateStopVisit.plannedTime)[0]) {
+        sameHourStopVisits.push(candidateStopVisit);
+      } else {
+        break;
+      }
+    }
+    return sameHourStopVisits;
+  }
+};
 
 class TsStopVisitDialog extends Component {
 
@@ -47,15 +73,6 @@ class TsStopVisitDialog extends Component {
       return null;
     }
 
-    let splitTimeToArray = function(timeString) {
-      return timeString.split(":");
-    };
-
-    let parseVisitDelayString = function(visit) {
-      const delayInMinutes = visit.delay / 60;
-      return `(${delayInMinutes > 0 ? '+' : ''}${parseInt(delayInMinutes, 10)})`;
-    };
-
     let checkboxes = [];
     let tableRows = [];
     const that = this;
@@ -67,18 +84,29 @@ class TsStopVisitDialog extends Component {
                     label={TsJourneyPatternParsers.getVisitingJourneyPatternDescription(visitingJourneyPattern)}/>
         </li>);
 
+      if (that.state.uncheckedJourneyPatternIds.indexOf(visitingJourneyPattern.id) !== -1) {
+        return;// filtering stop visits out
+      }
+
       if (visitingJourneyPattern.stopVisits) {// data could include always empty array?
-        visitingJourneyPattern.stopVisits.forEach(function(stopVisit) {
-          if (that.state.uncheckedJourneyPatternIds.indexOf(visitingJourneyPattern.id) !== -1) {
-            return;
-          }
-          const timeArrayPlanned = splitTimeToArray(stopVisit.plannedTime);
-          const timeArrayActual = splitTimeToArray(stopVisit.actualTime);
-          tableRows.push(<TableRow className="TsStopVisitDialogTableRow" key={stopVisit.journeyId}>
-            <TableRowColumn>{timeArrayPlanned[0]}</TableRowColumn>
-            <TableRowColumn>{timeArrayPlanned[1]}/{timeArrayActual[1]}{parseVisitDelayString(stopVisit)}/<b>{visitingJourneyPattern.line.designation}</b></TableRowColumn>
+        for(let i = 0; i < visitingJourneyPattern.stopVisits.length;/* index handling done based on visits on same hour count */) {
+          const visitsOnSameHour = TsStopVisitParser.findStopVisitsOnSameHour(i, visitingJourneyPattern.stopVisits);
+          const timeArrayPlannedOnFirstStopVisit = TsStopVisitParser.splitTimeToArray(visitsOnSameHour[0].plannedTime);
+
+          const visitsOnSameHourHtml = visitsOnSameHour.map(function(stopVisit){
+            const timeArrayPlanned = TsStopVisitParser.splitTimeToArray(stopVisit.plannedTime);
+            const timeArrayActual = TsStopVisitParser.splitTimeToArray(stopVisit.actualTime);
+            return <span className="TsStopVisitTd" key={`${visitingJourneyPattern.id}_${stopVisit.plannedTime}`}>
+                {timeArrayPlanned[1]}/{timeArrayActual[1]}{TsStopVisitParser.parseVisitDelayString(stopVisit)}/<b>{visitingJourneyPattern.line.designation}</b>
+              </span>;
+          });
+
+          tableRows.push(<TableRow key={`${visitingJourneyPattern.id}_${timeArrayPlannedOnFirstStopVisit[0]}`}>
+            <TableRowColumn>{timeArrayPlannedOnFirstStopVisit[0]}</TableRowColumn>
+            <TableRowColumn>{visitsOnSameHourHtml}</TableRowColumn>
           </TableRow>);
-        });
+          i = visitsOnSameHour.length > 1 ? i + visitsOnSameHour.length : i++;
+        }
       }
     });
 

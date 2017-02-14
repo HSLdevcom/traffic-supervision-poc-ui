@@ -18,23 +18,27 @@
   width: 50%;
 }
 
-.TsStopVisitDialogContent table * {
+.TsStopVisitDialog .TsStopVisitDialogContent table * {
   height: 30px !important;
 }
 
-.TsStopVisitDialogContent table tr td:first-child {
+.TsStopVisitDialog .TsStopVisitDialogContent table tr td:first-child {
   width: 60px;
-  padding-right: 0px !important;
+  padding-right: 0 !important;
   padding-left: 5px !important;
 }
 
-.TsStopVisitDialogContent table thead th:first-child {
+.TsStopVisitDialog .TsStopVisitDialogContent tbody tr td .TsStopVisitTd {
+  padding-right: 1em;
+}
+
+.TsStopVisitDialog .TsStopVisitDialogContent table thead th:first-child {
   width: 60px;
-  padding-right: 0px !important;
+  padding-right: 0 !important;
   padding-left: 5px !important;
 }
 
 .TsStopVisitDialog .TsStreetViewButton {
   float: right;
-  margin: 0 0 10px 0;
+  margin: 5px 0 10px 0;
 }
