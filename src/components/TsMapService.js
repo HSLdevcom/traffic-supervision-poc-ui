@@ -110,12 +110,9 @@ const TsMapConvUtil = {
     let textStyle = new ol.style.Style({
       text: new ol.style.Text({
         text: moment(location.timestamp).format("HH:mm"),
-        fontFamily: 'Rototo,sans-serif',
-        scale: 1.5,
-        offsetX: -40,
-        stroke: new ol.style.Stroke({
-          width: 1
-        })
+        font: 'bold 12px Rototo,sans-serif',
+        stroke: new ol.style.Stroke({ color: '#ffffff', width: 3 }),
+        offsetX: -30
       }),
     });
 
