@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {TsJourneyActions} from '../../redux/TsActions'
 import Checkbox from 'material-ui/Checkbox';
 import {Table, TableHeader, TableHeaderColumn, TableBody, TableRow, TableRowColumn} from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -8,6 +9,8 @@ import {TsStopParsers, TsJourneyPatternParsers} from '../../util/TsParsers';
 import {TsCommonStyle} from '../../TsConfiguration';
 import '../../styles/TsApp.css'
 import '../../styles/dialogs/TsStopVisitDialog.css';
+
+import {DummyJourneyData} from '../../dummydata/JourneyData'; //todo; replace with real data fetched from backend
 
 const TsStopVisitParser = {
 
@@ -44,6 +47,7 @@ class TsStopVisitDialog extends Component {
       uncheckedJourneyPatternIds: []
     };
     this.onCheckBoxChange = this.onCheckBoxChange.bind(this);
+    this.onJourneyClicked = this.onJourneyClicked.bind(this);
     this.onStreetViewButtonClick = this.onStreetViewButtonClick.bind(this);
   };
 
@@ -62,6 +66,10 @@ class TsStopVisitDialog extends Component {
       });
     }
   };
+
+  onJourneyClicked() {
+    this.props.dispatch(TsJourneyActions.setSelectedJourney(DummyJourneyData));
+  }
 
   onStreetViewButtonClick() {
     let url = `http://maps.google.com/maps?q=&layer=c&cbll=${this.props.selected.stop.location.latitude},${this.props.selected.stop.location.longitude}`;
@@ -96,10 +104,12 @@ class TsStopVisitDialog extends Component {
           const visitsOnSameHourHtml = visitsOnSameHour.map(function(stopVisit){
             const timeArrayPlanned = TsStopVisitParser.splitTimeToArray(stopVisit.plannedTime);
             const timeArrayActual = TsStopVisitParser.splitTimeToArray(stopVisit.actualTime);
-            return <span className="TsStopVisitTd" key={`${visitingJourneyPattern.id}_${stopVisit.plannedTime}`}>
+            return <span className="TsStopVisitTd"
+                         key={`${visitingJourneyPattern.id}_${stopVisit.plannedTime}`}
+                         onClick={this.onJourneyClicked}>
                 {timeArrayPlanned[1]}/{timeArrayActual[1]}{TsStopVisitParser.parseVisitDelayString(stopVisit)}/<b>{visitingJourneyPattern.line.designation}</b>
               </span>;
-          });
+          }, this);
 
           tableRows.push(<TableRow key={`${visitingJourneyPattern.id}_${timeArrayPlannedOnFirstStopVisit[0]}`}>
             <TableRowColumn>{timeArrayPlannedOnFirstStopVisit[0]}</TableRowColumn>
@@ -108,13 +118,13 @@ class TsStopVisitDialog extends Component {
           i = visitsOnSameHour.length > 1 ? i + visitsOnSameHour.length : i++;
         }
       }
-    });
+    }, this);
 
     const dialogContent =
       <div className="TsStopVisitDialogContent">
         <div className="CheckboxTitle">{this.props.localisedStrings.stopVisitDialog.journeyPatternCheckboxTitle}</div>
         <ul className="Checkboxes clearfix">{checkboxes}</ul>
-        <Table>
+        <Table selectable={false}>
           <TableHeader className="TsStopVisitDialogTableHeader"
               enableSelectAll={TsCommonStyle.table.header.enableSelectAll}
               displaySelectAll={TsCommonStyle.table.header.displaySelectAll}
