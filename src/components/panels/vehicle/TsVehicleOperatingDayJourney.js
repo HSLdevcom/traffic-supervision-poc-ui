@@ -1,21 +1,20 @@
 import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import {connect} from 'react-redux';
+import {TsJourneyActions} from '../../../redux/TsActions'
 import moment from 'moment';
 import "moment/locale/fi";
 import '../../../styles/panels/RightSide.css';
 import '../../../styles/panels/vehicle/TsVehicleOperatingDayJourney.css';
 
-class TsVehicleOperatingDayJourney extends Component {
+import {DummyJourneyData} from '../../../dummydata/JourneyData'; //todo; replace with real data fetched from backend
 
-  constructor(props) {
-    super(props);
-    this.state = {
-    }
-  }
+class TsVehicleOperatingDayJourney extends Component {
 
   handleClicked(id) {
     console.log(this.props.data);
     console.log("Link clicked: " + id);
+    this.props.dispatch(TsJourneyActions.setSelectedJourney(DummyJourneyData));
   }
 
   getButtonLabel() {
@@ -80,4 +79,4 @@ class TsVehicleOperatingDayJourney extends Component {
   }
 }
 
-export default TsVehicleOperatingDayJourney;
+export default connect()(TsVehicleOperatingDayJourney);

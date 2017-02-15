@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import TsDrawerPanel from '../../common/TsDrawerPanel';
 import TsJourneyDataSearch from './TsJourneyDataSearch'
 import TsJourneyData from './TsJourneyDataInformation'
@@ -17,6 +18,10 @@ class TsJourneyDataPanel extends Component {
     this.setState({ panelVisible: visible });
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setPanelVisible(nextProps.selected.journey.journeyId !== undefined);
+  }
+
   render() {
     return (
       <div className="TsJourneyDataPanel">
@@ -30,4 +35,9 @@ class TsJourneyDataPanel extends Component {
   }
 }
 
-export default TsJourneyDataPanel;
+const mapStateToProps = function(store) {
+  return {
+    selected: store.journeysState.selected
+  };
+};
+export default connect(mapStateToProps)(TsJourneyDataPanel);

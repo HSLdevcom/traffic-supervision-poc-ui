@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {List, ListItem} from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 import {TsCommonStyle} from '../../../TsConfiguration';
 import '../../../styles/common/TsRow.css'
 import '../../../styles/panels/journeydata/TsJourneyData.css'
-
-import {DummyJourneyData} from '../../../dummydata/JourneyData'; //todo; replace with real data
 
 const TsJourneyDataUtil = {
   parseDateTimeToTimeString: function(dateTime) {
@@ -13,17 +12,13 @@ const TsJourneyDataUtil = {
   }
 };
 
-class TsJourneyData extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      journeyData: DummyJourneyData
-    };
-  };
+class TsJourneyDataInformation extends Component {
 
   render() {
-    console.log(this)
+    if (!this.props.selected.journey.journeyId) {
+      return null;
+    }
+
     const deviationCaseAndBulletinsButtons = {
       height: TsCommonStyle.raisedButton.height,
       fontSize: '10px',
@@ -37,7 +32,7 @@ class TsJourneyData extends Component {
             <div className="TsRowTitle">{this.props.localisedStrings.journeyDataPanel.startTime}</div>
             <div className="TsRowContent">
               <div className="TsRowContentItem">
-                {TsJourneyDataUtil.parseDateTimeToTimeString(this.state.journeyData.planned.startTime)}
+                {TsJourneyDataUtil.parseDateTimeToTimeString(this.props.selected.journey.planned.startTime)}
               </div>
             </div>
           </ListItem>
@@ -45,7 +40,7 @@ class TsJourneyData extends Component {
             <div className="TsRowTitle">{this.props.localisedStrings.journeyDataPanel.endTime}</div>
             <div className="TsRowContent">
               <div className="TsRowContentItem">
-                {TsJourneyDataUtil.parseDateTimeToTimeString(this.state.journeyData.planned.endTime)}
+                {TsJourneyDataUtil.parseDateTimeToTimeString(this.props.selected.journey.planned.endTime)}
               </div>
             </div>
           </ListItem>
@@ -53,7 +48,7 @@ class TsJourneyData extends Component {
             <div className="TsRowTitle">{this.props.localisedStrings.journeyDataPanel.terminalTime}</div>
             <div className="TsRowContent">
               <div className="TsRowContentItem">
-                {this.state.journeyData.planned.terminalTime}
+                {this.props.selected.journey.planned.terminalTime}
               </div>
             </div>
           </ListItem>
@@ -61,7 +56,7 @@ class TsJourneyData extends Component {
             <div className="TsRowTitle">{this.props.localisedStrings.journeyDataPanel.recoveryTime}</div>
             <div className="TsRowContent">
               <div className="TsRowContentItem">
-                {this.state.journeyData.planned.recoveryTime}
+                {this.props.selected.journey.planned.recoveryTime}
               </div>
             </div>
           </ListItem>
@@ -69,7 +64,7 @@ class TsJourneyData extends Component {
             <div className="TsRowTitle">{this.props.localisedStrings.journeyDataPanel.requiredVehicleClass}</div>
             <div className="TsRowContent">
               <div className="TsRowContentItem">
-                {this.state.journeyData.planned.requiredVehicleClass}
+                {this.props.selected.journey.planned.requiredVehicleClass}
               </div>
             </div>
           </ListItem>
@@ -77,7 +72,7 @@ class TsJourneyData extends Component {
             <div className="TsRowTitle">{this.props.localisedStrings.journeyDataPanel.contractReference}</div>
             <div className="TsRowContent">
               <div className="TsRowContentItem">
-                {this.state.journeyData.planned.contractReference}
+                {this.props.selected.journey.planned.contractReference}
               </div>
             </div>
           </ListItem>
@@ -85,7 +80,7 @@ class TsJourneyData extends Component {
             <div className="TsRowTitle">{this.props.localisedStrings.operator}</div>
             <div className="TsRowContent">
               <div className="TsRowContentItem">
-                {this.state.journeyData.planned.mainOperator.name}
+                {this.props.selected.journey.planned.mainOperator.name}
               </div>
             </div>
           </ListItem>
@@ -93,7 +88,7 @@ class TsJourneyData extends Component {
             <div className="TsRowTitle">{this.props.localisedStrings.journeyDataPanel.subContractors}</div>
             <div className="TsRowContent">
               <div className="TsRowContentItem">
-                {this.state.journeyData.planned.subContractors[0].name}
+                {this.props.selected.journey.planned.subContractors[0].name}
               </div>
             </div>
           </ListItem>
@@ -101,7 +96,7 @@ class TsJourneyData extends Component {
             <div className="TsRowTitle">{this.props.localisedStrings.driver}</div>
             <div className="TsRowContent">
               <div className="TsRowContentItem">
-                {this.state.journeyData.monitored.drivers}
+                {this.props.selected.journey.monitored.drivers}
               </div>
             </div>
           </ListItem>
@@ -109,7 +104,7 @@ class TsJourneyData extends Component {
             <div className="TsRowTitle">{this.props.localisedStrings.journeyDataPanel.entries}</div>
             <div className="TsRowContent">
               <div className="TsRowContentItem">
-                {this.state.journeyData.monitored.totalEntries}
+                {this.props.selected.journey.monitored.totalEntries}
               </div>
             </div>
           </ListItem>
@@ -118,7 +113,7 @@ class TsJourneyData extends Component {
             <div className="TsRowTitle">{this.props.localisedStrings.journeyDataPanel.maximumLoad}</div>
             <div className="TsRowContent">
               <div className="TsRowContentItem">
-                {this.state.journeyData.monitored.maximumLoad}
+                {this.props.selected.journey.monitored.maximumLoad}
               </div>
             </div>
           </ListItem>
@@ -142,4 +137,9 @@ class TsJourneyData extends Component {
   }
 }
 
-export default TsJourneyData;
+const mapStateToProps = function(store) {
+  return {
+    selected: store.journeysState.selected
+  };
+};
+export default connect(mapStateToProps)(TsJourneyDataInformation);
