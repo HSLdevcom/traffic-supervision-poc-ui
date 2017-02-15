@@ -21,6 +21,27 @@ const TsJourneyPatternActions = {
 };
 
 /**
+ * Actions related to journeys
+ */
+const setSelectedJourney = function(journey) {
+  return {
+    type: 'SET_SELECTED_JOURNEY',
+    journey: journey
+  }
+};
+
+const clearSelectedJourney = function() {
+  return {
+    type: 'CLEAR_SELECTED_JOURNEY'
+  }
+};
+
+const TsJourneyActions = {
+  setSelectedJourney: setSelectedJourney,
+  clearSelectedJourney: clearSelectedJourney
+};
+
+/**
  * Actions related to stops
  */
 const setSelectedStop = function(stop, stopVisits) {
@@ -66,4 +87,4 @@ const TsVehicleLocationActions = {
 /**
  * All actions API
  */
-export { TsJourneyPatternActions, TsStopActions, TsVehicleLocationActions }
+export { TsJourneyPatternActions, TsJourneyActions, TsStopActions, TsVehicleLocationActions }

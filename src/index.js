@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import TsApp from './components/TsApp';
 import {Provider} from 'react-redux'
 import {createStore, combineReducers} from 'redux'
-import {TsJourneyPatternReducers, TsStopReducers, TsVechicleLocationReducers} from './redux/TsReducers'
+import {TsJourneyPatternReducers,
+        TsJourneyReducers,
+        TsStopReducers,
+        TsVechicleLocationReducers} from './redux/TsReducers'
 import './styles/index.css';
 
 const reducers = combineReducers({
   journeyPatternsState: TsJourneyPatternReducers,
+  journeysState: TsJourneyReducers,
   stopsState: TsStopReducers,
   vehicleLocationState: TsVechicleLocationReducers
 });

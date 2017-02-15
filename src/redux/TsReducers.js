@@ -29,6 +29,33 @@ const TsJourneyPatternReducers = function(state = initialJourneyPatternsState, a
 };
 
 /**
+ * Reducers related to journeys
+ */
+const initialJourneyState = {
+  selected: {
+    journey: {},
+  }
+};
+const TsJourneyReducers = function(state = initialJourneyState, action) {
+  if (action.type === 'SET_SELECTED_JOURNEY') {
+    return Object.assign({}, state,
+      { selected: {
+        journey: action.journey
+      }
+      }
+    )
+  } else if (action.type === 'CLEAR_SELECTED_JOURNEY') {
+    return Object.assign({}, state,
+      { selected: {
+        journey: {}
+      }
+      }
+    )
+  }
+  return state;
+};
+
+/**
  * Reducers related to stops
  */
 const initialStopsState = {
@@ -89,4 +116,4 @@ const TsVechicleLocationReducers = function(state = initialVehicleLocationState,
 /**
  * All reducers API
  */
-export { TsJourneyPatternReducers, TsStopReducers, TsVechicleLocationReducers }
+export { TsJourneyPatternReducers, TsJourneyReducers, TsStopReducers, TsVechicleLocationReducers }
