@@ -6,14 +6,18 @@ import {createStore, combineReducers} from 'redux'
 import {TsJourneyPatternReducers,
         TsJourneyReducers,
         TsStopReducers,
-        TsVechicleLocationReducers} from './redux/TsReducers'
+        TsVechicleLocationReducers,
+        TsJourneyBulletinsReducers,
+        TsJourneyDeviationReducers} from './redux/TsReducers'
 import './styles/index.css';
 
 const reducers = combineReducers({
   journeyPatternsState: TsJourneyPatternReducers,
   journeysState: TsJourneyReducers,
   stopsState: TsStopReducers,
-  vehicleLocationState: TsVechicleLocationReducers
+  vehicleLocationState: TsVechicleLocationReducers,
+  journeyBulletinsState: TsJourneyBulletinsReducers,
+  journeyDeviationState: TsJourneyDeviationReducers,
 });
 const store = createStore(reducers);
 

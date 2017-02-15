@@ -85,6 +85,55 @@ const TsVehicleLocationActions = {
 };
 
 /**
+ * Actions related to journey bulletins
+ */
+const showJourneyBulletins = function(bulletins) {
+  return {
+    type: 'SHOW_JOURNEY_BULLETINS',
+    journeyBulletins: bulletins
+  }
+};
+
+const hideJourneyBulletins = function() {
+  return {
+    type: 'HIDE_JOURNEY_BULLETINS'
+  }
+};
+
+const TsJourneyBulletinsActions = {
+  showJourneyBulletins: showJourneyBulletins,
+  hideJourneyBulletins: hideJourneyBulletins
+};
+
+/**
+ * Actions related to journey deviations
+ */
+const showJourneyDeviation = function(deviation) {
+  return {
+    type: 'SHOW_JOURNEY_DEVIATION',
+    journeyDeviation: deviation
+  }
+};
+
+const hideJourneyDeviation = function() {
+  return {
+    type: 'HIDE_JOURNEY_DEVIATION'
+  }
+};
+
+const TsJourneyDeviationActions = {
+  showJourneyDeviation: showJourneyDeviation,
+  hideJourneyDeviation: hideJourneyDeviation
+};
+
+/**
  * All actions API
  */
-export { TsJourneyPatternActions, TsJourneyActions, TsStopActions, TsVehicleLocationActions }
+export {
+  TsJourneyPatternActions,
+  TsJourneyActions,
+  TsStopActions,
+  TsVehicleLocationActions,
+  TsJourneyBulletinsActions,
+  TsJourneyDeviationActions
+}

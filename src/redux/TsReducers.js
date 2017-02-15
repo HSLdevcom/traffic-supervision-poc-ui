@@ -114,6 +114,61 @@ const TsVechicleLocationReducers = function(state = initialVehicleLocationState,
 };
 
 /**
+ * Reducers related to journey bulletins
+ */
+const initialJourneyBulletinsState = {
+  journeyBulletins: {},
+};
+
+const TsJourneyBulletinsReducers = function(state = initialJourneyBulletinsState, action) {
+  if (action.type === 'SHOW_JOURNEY_BULLETINS') {
+    return Object.assign({}, state,
+      {
+        journeyBulletins: action.journeyBulletins
+      }
+    )
+  } else if (action.type === 'HIDE_JOURNEY_BULLETINS') {
+    return Object.assign({}, state,
+      {
+        journeyBulletins: {}
+      }
+    )
+  }
+  return state;
+};
+
+/**
+ * Reducers related to journey deviations
+ */
+const initialJourneyDeviationState = {
+  journeyDeviation: {}
+};
+
+const TsJourneyDeviationReducers = function(state = initialJourneyDeviationState, action) {
+  if (action.type === 'SHOW_JOURNEY_DEVIATION') {
+    return Object.assign({}, state,
+      {
+        journeyDeviation: action.journeyDeviation
+      }
+    )
+  } else if (action.type === 'HIDE_JOURNEY_DEVIATION') {
+    return Object.assign({}, state,
+      {
+        journeyDeviation: {}
+      }
+    )
+  }
+  return state;
+};
+
+/**
  * All reducers API
  */
-export { TsJourneyPatternReducers, TsJourneyReducers, TsStopReducers, TsVechicleLocationReducers }
+export {
+  TsJourneyPatternReducers,
+  TsJourneyReducers,
+  TsStopReducers,
+  TsVechicleLocationReducers,
+  TsJourneyBulletinsReducers,
+  TsJourneyDeviationReducers
+}

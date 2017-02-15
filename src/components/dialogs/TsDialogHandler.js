@@ -5,6 +5,8 @@ import TsBlockDialog from './TsBlockDialog'
 import TsJourneyBulletinsDialog from './TsJourneyBulletinsDialog'
 import TsJourneyDeviationDialog from './TsJourneyDeviationDialog'
 import {TsStopActions} from '../../redux/TsActions';
+import {TsJourneyBulletinsActions} from '../../redux/TsActions';
+import {TsJourneyDeviationActions} from '../../redux/TsActions';
 
 class TsDialogHandler extends Component {
   constructor(props) {
@@ -24,7 +26,9 @@ class TsDialogHandler extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-        stopVisitDialogVisible: nextProps.selectedStop.stop.id !== undefined
+        stopVisitDialogVisible: nextProps.selectedStop.stop.id !== undefined,
+        journeyBulletinsDialogVisible: nextProps.journeyBulletins.id !== undefined,
+        journeyDeviationDialogVisible: nextProps.journeyDeviation.id !== undefined
     });
   };
 
@@ -45,12 +49,14 @@ class TsDialogHandler extends Component {
     this.setState({
       journeyBulletinsDialogVisible: false
     });
+    this.props.dispatch(TsJourneyBulletinsActions.hideJourneyBulletins());
   }
 
   journeyDeviationDialogCloseRequest() {
     this.setState({
       journeyDeviationDialogVisible: false
     });
+    this.props.dispatch(TsJourneyDeviationActions.hideJourneyDeviation());
   }
 
   render() {
@@ -83,7 +89,9 @@ class TsDialogHandler extends Component {
 
 const mapStateToProps = function(store) {
   return {
-    selectedStop: store.stopsState.selected
+    selectedStop: store.stopsState.selected,
+    journeyBulletins: store.journeyBulletinsState.journeyBulletins,
+    journeyDeviation: store.journeyDeviationState.journeyDeviation
   };
 };
 export default connect(mapStateToProps)(TsDialogHandler);

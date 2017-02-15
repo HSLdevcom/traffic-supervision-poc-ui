@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import TsDialog from '../common/TsDialog';
-import {TsCommonStyle} from '../../TsConfiguration';
 import '../../styles/TsApp.css'
 import '../../styles/dialogs/TsJourneyDeviationDialog.css';
 
@@ -27,7 +26,7 @@ class TsJourneyDeviationDialog extends Component {
 
 const mapStateToProps = function(store) {
   return {
-    selected: store.stopsState.selected
+    journeyDeviation: store.journeyDeviationState.journeyDeviation
   };
 };
 export default connect(mapStateToProps)(TsJourneyDeviationDialog);

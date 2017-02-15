@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 import "moment/locale/fi";
 import {TsTimeParsers} from '../../../util/TsParsers';
+import {TsJourneyBulletinsActions} from '../../../redux/TsActions'
+import {TsJourneyDeviationActions} from '../../../redux/TsActions'
 import {List, ListItem} from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 import Forward from 'material-ui/svg-icons/content/forward'
@@ -17,6 +19,28 @@ const TsJourneyDataUtil = {
 };
 
 class TsJourneyDataInformation extends Component {
+
+  constructor(props) {
+    super(props);
+    this.handleShowDeviationDialog = this.handleShowDeviationDialog.bind(this);
+    this.handleShowBulletinsDialog = this.handleShowBulletinsDialog.bind(this);
+  }
+
+  handleShowDeviationDialog() {
+    this.props.dispatch(
+      TsJourneyDeviationActions.showJourneyDeviation(
+        {id: 1}
+      )
+    );
+  }
+
+  handleShowBulletinsDialog() {
+    this.props.dispatch(
+      TsJourneyBulletinsActions.showJourneyBulletins(
+        {id: 1}
+      )
+    );
+  }
 
   render() {
     if (!this.props.selected.journey.journeyId) {
@@ -140,14 +164,14 @@ class TsJourneyDataInformation extends Component {
             <div className="TsRowTitle">{this.props.localisedStrings.journeyDataPanel.deviationCases}</div>
             <div className="TsRowContent">
               <RaisedButton className="TsRowContentItem" primary={true} style={deviationCaseAndBulletinsButtons}
-                            label="2 häiriötä, Lähtö peruttu"/>
+                            label="2 häiriötä, Lähtö peruttu" onClick={this.handleShowDeviationDialog}/>
             </div>
           </ListItem>
           <ListItem className="TsRow" disabled={true}>
             <div className="TsRowTitle">{this.props.localisedStrings.journeyDataPanel.bulletins}</div>
             <div className="TsRowContent">
               <RaisedButton className="TsRowContentItem" primary={true} style={deviationCaseAndBulletinsButtons}
-                            label="1 häiriötiedote, 1 matkustajatiedote"/>
+                            label="1 häiriötiedote, 1 matkustajatiedote" onClick={this.handleShowBulletinsDialog}/>
             </div>
           </ListItem>
         </List>
