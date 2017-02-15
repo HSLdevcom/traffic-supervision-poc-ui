@@ -67,6 +67,8 @@ const localisation = {
     },
     journeyDataPanel: {
       startTime: 'Lähtöaika'
+    blockDialog: {
+      dialogTitle: "HSL:n tai Liikennöisijän lähtöketju"
     }
   },
   en: {}

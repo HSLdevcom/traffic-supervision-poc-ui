@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import TsStopVisitDialog from './TsStopVisitDialog'
+import TsBlockDialog from './TsBlockDialog'
 import {TsStopActions} from '../../redux/TsActions';
 
 class TsDialogHandler extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stopVisitDialogVisible: false
+      stopVisitDialogVisible: false,
+      blockDialogVisible: false
     };
     this.stopVisitDialogCloseRequest = this.stopVisitDialogCloseRequest.bind(this);
+    this.blockDialogCloseRequest = this.blockDialogCloseRequest.bind(this);
   };
 
   componentWillReceiveProps(nextProps) {
@@ -25,12 +28,24 @@ class TsDialogHandler extends Component {
     this.props.dispatch(TsStopActions.clearSelectedStop());// setting dummy stuff
   }
 
+  blockDialogCloseRequest() {
+    this.setState({
+      blockDialogVisible: false
+    });
+  }
+
   render() {
     return (
-      <TsStopVisitDialog className="TsStopVisitDialog"
-                         localisedStrings={this.props.localisedStrings}
-                         stopVisitDialogVisible={this.state.stopVisitDialogVisible}
-                         stopVisitDialogCloseRequest={this.stopVisitDialogCloseRequest}/>
+      <div>
+        <TsStopVisitDialog className="TsStopVisitDialog"
+                           localisedStrings={this.props.localisedStrings}
+                           stopVisitDialogVisible={this.state.stopVisitDialogVisible}
+                           stopVisitDialogCloseRequest={this.stopVisitDialogCloseRequest}/>
+        <TsBlockDialog className="TsBlockDialog"
+                       localisedStrings={this.props.localisedStrings}
+                       blockDialogVisible={this.state.blockDialogVisible}
+                       blockDialogCloseRequest={this.blockDialogCloseRequest}/>
+      </div>
     );
   };
 }

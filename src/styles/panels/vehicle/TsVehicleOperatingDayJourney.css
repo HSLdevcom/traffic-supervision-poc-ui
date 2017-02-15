@@ -1,7 +1,9 @@
 .TsVehicleOperatingDayJourney {
+  font-size: 14px;
   display: flex;
   padding-bottom: 10px;
   height: 20px;
+  justify-content: center;
 }
 
 .TsVehicleOperatingDayJourney label{
