@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import TsDialog from '../common/TsDialog';
-import {TsCommonStyle} from '../../TsConfiguration';
 import TsVehicleOperatingDayJourneys from '../panels/vehicle/TsVehicleOperatingDayJourneys.js'
 import '../../styles/TsApp.css'
 import '../../styles/dialogs/TsBlockDialog.css';
