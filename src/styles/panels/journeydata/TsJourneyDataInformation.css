@@ -16,3 +16,8 @@
   font-size: 10px !important;
   line-height: 20px;
 }
+
+.TsHiglightedText {
+  color: #38b8cb;
+  font-weight: bold;
+}
