@@ -34,13 +34,13 @@ class TsJourneyDataSearch extends Component {
                 <RaisedButton className="TsRowContentItem" primary={true} style={switchDirectionButtonStyle} label="<>"/>
               </span>
           </ListItem>
-          <ListItem className="TsRow" disabled={true}>
+          <ListItem className="TsRow TsTimeSelect" disabled={true}>
               <div className="TsRowTitle">{this.props.localisedStrings.journeyDataPanel.startTime}</div>
               <div className="TsRowContent">
                 <RaisedButton className="TsRowContentItem" primary={true} style={nextPreviousButtonStyle} label="<"/>
                 <select className="TsRowContentItem">
-                  <option>10:25</option>
-                  <option>10:55</option>
+                  <option>07:55</option>
+                  <option>09:20</option>
                   <option>11:05</option>
                 </select>
                 <RaisedButton className="TsRowContentItem" primary={true} style={nextPreviousButtonStyle} label=">"/>

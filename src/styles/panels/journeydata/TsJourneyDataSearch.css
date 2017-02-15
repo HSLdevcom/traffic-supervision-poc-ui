@@ -1,4 +1,13 @@
 .TsJourneyDataPanel .TsJourneyDataSearch .TsRowContent .TsRowContentItem span {
   padding-left: 0 !important;
   padding-right: 0 !important;
+  line-height: 20px;
+}
+
+.TsJourneyDataPanel .TsJourneyDataSearch .TsRow .TsRowTitle {
+  font-weight: bold;
+}
+
+.TsJourneyDataPanel .TsJourneyDataSearch .TsTimeSelect .TsRowContent .TsRowContentItem {
+  margin-right: 10px;
 }
