@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import {connect} from 'react-redux';
 import {TsJourneyActions} from '../../../redux/TsActions'
+import {TsTimeParsers} from '../../../util/TsParsers';
 import moment from 'moment';
 import "moment/locale/fi";
 import '../../../styles/panels/RightSide.css';
@@ -30,35 +31,13 @@ class TsVehicleOperatingDayJourney extends Component {
     return label;
   }
 
-  getTimeDifferenceLabel(planned, actual) {
-    let label = moment(actual).format('HH:mm');
-    let differenceSeconds = moment(actual).diff(planned, 'seconds');
-    let differenceMinutes = parseInt(differenceSeconds / 60, 10);
-    let min = "";
-    let sec = "";
-
-    differenceSeconds -= differenceMinutes * 60;
-    if (differenceSeconds < 0) differenceSeconds *= -1;
-    sec = ("0" + differenceSeconds.toString()).slice(-2);
-
-    if (differenceMinutes < 0) {
-      differenceMinutes *= -1;
-      min = "-" + ("0" + differenceMinutes.toString()).slice(-2);
-    } else {
-      min = "+" + ("0" + differenceMinutes.toString()).slice(-2);
-    }
-    label += " (" + min + ":" + sec + ")";
-
-    return label;
-  }
-
   render() {
     var buttonLabel = this.getButtonLabel();
-    var startTimeDiff = this.getTimeDifferenceLabel(
+    var startTimeDiff = TsTimeParsers.getTimeDifferenceLabel(
       this.props.data['plannedStartTime'],
       this.props.data['actualStartTime']
     );
-    var endTimeDiff = this.getTimeDifferenceLabel(
+    var endTimeDiff = TsTimeParsers.getTimeDifferenceLabel(
       this.props.data['plannedEndTime'],
       this.props.data['actualEndTime']
     );

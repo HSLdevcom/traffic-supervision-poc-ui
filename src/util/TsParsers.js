@@ -1,3 +1,6 @@
+import moment from 'moment';
+import "moment/locale/fi";
+
 /**
  * Parser utils for the needs of UI
  */
@@ -73,7 +76,36 @@ const TsStopParsers = {
     }
     return `${stop.name}${stopCodes}`;
   }
-
 };
 
-export { TsJourneyPatternParsers, TsStopParsers };
+/**
+ * Time related parsers
+ */
+const TsTimeParsers = {
+  /**
+   * Parses time difference from two times
+   */
+  getTimeDifferenceLabel(planned, actual, showSeconds) {
+    let label = moment(actual).format(showSeconds ? 'HH:mm:ss':'HH:mm');
+    let differenceSeconds = moment(actual).diff(planned, 'seconds');
+    let differenceMinutes = parseInt(differenceSeconds / 60, 10);
+    let min = "";
+    let sec = "";
+
+    differenceSeconds -= differenceMinutes * 60;
+    if (differenceSeconds < 0) differenceSeconds *= -1;
+    sec = ("0" + differenceSeconds.toString()).slice(-2);
+
+    if (differenceMinutes < 0) {
+      differenceMinutes *= -1;
+      min = "-" + ("0" + differenceMinutes.toString()).slice(-2);
+    } else {
+      min = "+" + ("0" + differenceMinutes.toString()).slice(-2);
+    }
+    label += " (" + min + ":" + sec + ")";
+
+    return label;
+  }
+};
+
+export { TsJourneyPatternParsers, TsStopParsers, TsTimeParsers };
