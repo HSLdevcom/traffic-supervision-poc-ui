@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import TsDrawerPanel from '../../common/TsDrawerPanel';
 import TsJourneyDataSearch from './TsJourneyDataSearch'
+import TsJourneyData from './TsJourneyDataInformation'
 
 class TsJourneyDataPanel extends Component {
 
@@ -22,6 +23,7 @@ class TsJourneyDataPanel extends Component {
         <TsDrawerPanel panelVisible={this.state.panelVisible}
                        setPanelVisible={this.setPanelVisible}>
           <TsJourneyDataSearch localisedStrings={this.props.localisedStrings}/>
+          <TsJourneyData localisedStrings={this.props.localisedStrings}/>
         </TsDrawerPanel>
       </div>
     );

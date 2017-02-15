@@ -24,39 +24,39 @@ const DummyJourneyData =
           'shortName' : 'NOF',
         }, {
           'id' : '7990000000003026',
-          'name' : 'Nurmij‰rven Linja Oy',
+          'name' : 'Nurmij√§rven Linja Oy',
           'code' : '0036',
-          'corporation' : 'Korsisaari-yhtiˆt',
+          'corporation' : 'Korsisaari-yhti√∂t',
           'shortName' : 'NurL',
         }      
       ],
       'authorityBlock': {
         'number': 34572,
         'previousJourney': {
-          'journeyId': '1523612989'
+          'journeyId': '1523612989',
           'plannedStartTime': '2017-02-03T07:20:00.000',
           'plannedEndTime': '2017-02-03T07:55:00.000',  
           'actualStartTime': '2017-02-03T07:21:00.000',
           'actualEndTime': '2017-02-03T07:52:00.000',           
           'variant': null,
-          'directionOfLine': {'direction': '1', 'destination': 'Ver‰j‰laakso'},
+          'directionOfLine': {'direction': '1', 'destination': 'Ver√§j√§laakso'},
           'line': {'designation': '65', 'transportMode': 'BUS'}
         },
         'nextJourney': {
-          'journeyId': '1523612991'
+          'journeyId': '1523612991',
           'plannedStartTime': '2017-02-03T08:40:00.000',
           'plannedEndTime': '2017-02-03T09:10:00.000',  
           'actualStartTime': '2017-02-03T08:41:00.000',
           'actualEndTime': '2017-02-03T09:12:00.000',           
           'variant': null,
-          'directionOfLine': {'direction': '1', 'destination': 'Ver‰j‰laakso'},
+          'directionOfLine': {'direction': '1', 'destination': 'Ver√§j√§laakso'},
           'line': {'designation': '65', 'transportMode': 'BUS'}
         }
       },
       'operatorBlock': {
         'number': 13,
         'previousJourney': {
-          'journeyId': '1523612901'
+          'journeyId': '1523612901',
           'plannedStartTime': '2017-02-03T07:30:00.000',
           'plannedEndTime': '2017-02-03T07:55:00.000',  
           'actualStartTime': '2017-02-03T07:30:00.000',
@@ -66,13 +66,13 @@ const DummyJourneyData =
           'line': {'designation': '74', 'transportMode': 'BUS'}
         },
         'nextJourney': {
-          'journeyId': '1523612991'
+          'journeyId': '1523612991',
           'plannedStartTime': '2017-02-03T08:40:00.000',
           'plannedEndTime': '2017-02-03T09:10:00.000',  
           'actualStartTime': '2017-02-03T08:41:00.000',
           'actualEndTime': '2017-02-03T09:12:00.000',           
           'variant': null,
-          'directionOfLine': {'direction': '1', 'destination': 'Ver‰j‰laakso'},
+          'directionOfLine': {'direction': '1', 'destination': 'Ver√§j√§laakso'},
           'line': {'designation': '65', 'transportMode': 'BUS'}
         }
       }

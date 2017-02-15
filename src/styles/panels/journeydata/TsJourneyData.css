@@ -1,0 +1,18 @@
+.TsJourneyDataPanel .TsJourneyData .TsRow {
+  padding-bottom: 0 !important;
+}
+
+.TsJourneyDataPanel .TsJourneyData .TsRow .TsRowTitle {
+  font-weight: bold;
+}
+
+.TsJourneyDataPanel .TsJourneyData .TsRowContent {
+  position: absolute;
+  left: 35%;
+}
+
+.TsJourneyDataPanel .TsJourneyData .TsRowContent button span {
+  margin-top: 0 !important;
+  font-size: 10px !important;
+  line-height: 20px;
+}

@@ -2,9 +2,13 @@
 const localisation = {
   fi: {
     pageTitle: 'Liikenteen valvontatyökalu',
+
     journeyPattern: 'Reitti',
     line: 'Linja',
     stop: 'Pysäkki',
+    operator: 'Liikennöitsijä',
+    driver: 'Kuljettaja',
+
     searchPanel: {
       searchJourneyPatternsHintText: 'Etsi reittejä',
       searchStopsHintText: 'Etsi pysäkkejä'
@@ -66,7 +70,17 @@ const localisation = {
       googleStreetViewButton: "Google katunäkymä"
     },
     journeyDataPanel: {
-      startTime: 'Lähtöaika'
+      startTime: 'Lähtöaika',
+      endTime: 'Lopetusaika',
+      terminalTime: 'Terminaaliaika',
+      recoveryTime: 'Elpymisaika',
+      requiredVehicleClass: 'Kalustovaatimus',
+      contractReference: 'Kilpailukohde',
+      subContractors: 'Alihankkijat',
+      entries: 'Nousut',
+      maximumLoad: 'Maksimikuorma',
+      deviationCases: 'Poikkeamatiedot',
+      bulletins: 'Tiedotteet'
     },
     blockDialog: {
       dialogTitle: "HSL:n tai Liikennöisijän lähtöketju"
