@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import TsStopVisitDialog from './TsStopVisitDialog'
 import TsBlockDialog from './TsBlockDialog'
+import TsJourneyBulletinsDialog from './TsJourneyBulletinsDialog'
+import TsJourneyDeviationDialog from './TsJourneyDeviationDialog'
 import {TsStopActions} from '../../redux/TsActions';
 
 class TsDialogHandler extends Component {
@@ -9,10 +11,15 @@ class TsDialogHandler extends Component {
     super(props);
     this.state = {
       stopVisitDialogVisible: false,
-      blockDialogVisible: false
+      blockDialogVisible: false,
+      journeyBulletinsDialogVisible: false,
+      journeyDeviationDialogVisible: false
+
     };
     this.stopVisitDialogCloseRequest = this.stopVisitDialogCloseRequest.bind(this);
     this.blockDialogCloseRequest = this.blockDialogCloseRequest.bind(this);
+    this.journeyBulletinsDialogCloseRequest = this.journeyBulletinsDialogCloseRequest.bind(this);
+    this.journeyDeviationDialogCloseRequest = this.journeyDeviationDialogCloseRequest.bind(this);
   };
 
   componentWillReceiveProps(nextProps) {
@@ -34,17 +41,41 @@ class TsDialogHandler extends Component {
     });
   }
 
+  journeyBulletinsDialogCloseRequest() {
+    this.setState({
+      journeyBulletinsDialogVisible: false
+    });
+  }
+
+  journeyDeviationDialogCloseRequest() {
+    this.setState({
+      journeyDeviationDialogVisible: false
+    });
+  }
+
   render() {
     return (
       <div>
-        <TsStopVisitDialog className="TsStopVisitDialog"
-                           localisedStrings={this.props.localisedStrings}
-                           stopVisitDialogVisible={this.state.stopVisitDialogVisible}
-                           stopVisitDialogCloseRequest={this.stopVisitDialogCloseRequest}/>
-        <TsBlockDialog className="TsBlockDialog"
-                       localisedStrings={this.props.localisedStrings}
-                       blockDialogVisible={this.state.blockDialogVisible}
-                       blockDialogCloseRequest={this.blockDialogCloseRequest}/>
+        <TsStopVisitDialog
+          className="TsStopVisitDialog"
+          localisedStrings={this.props.localisedStrings}
+          stopVisitDialogVisible={this.state.stopVisitDialogVisible}
+          stopVisitDialogCloseRequest={this.stopVisitDialogCloseRequest}/>
+        <TsBlockDialog
+          className="TsBlockDialog"
+          localisedStrings={this.props.localisedStrings}
+          blockDialogVisible={this.state.blockDialogVisible}
+          blockDialogCloseRequest={this.blockDialogCloseRequest}/>
+        <TsJourneyBulletinsDialog
+          className="TsJourneyBulletinsDialog"
+          localisedStrings={this.props.localisedStrings}
+          journeyBulletinsDialogVisible={this.state.journeyBulletinsDialogVisible}
+          journeyBulletinsDialogCloseRequest={this.journeyBulletinsDialogCloseRequest}/>
+        <TsJourneyDeviationDialog
+          className="TsJourneyDeviationDialog"
+          localisedStrings={this.props.localisedStrings}
+          journeyDeviationDialogVisible={this.state.journeyDeviationDialogVisible}
+          journeyDeviationDialogCloseRequest={this.journeyDeviationDialogCloseRequest}/>
       </div>
     );
   };

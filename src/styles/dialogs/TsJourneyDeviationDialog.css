@@ -1,0 +1,11 @@
+.TsJourneyDeviationDialog .TsDialog > .react-draggable {
+  width: 400px;
+  height: 500px;
+}
+
+.TsJourneyDeviationDialog .DialogContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(0%, 200%);
+}

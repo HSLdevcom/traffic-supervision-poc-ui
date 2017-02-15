@@ -7,12 +7,6 @@ import '../../styles/dialogs/TsBlockDialog.css';
 
 class TsBlockDialog extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  };
-
   render() {
 
     const dialogContent =

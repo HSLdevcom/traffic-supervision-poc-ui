@@ -84,6 +84,12 @@ const localisation = {
     },
     blockDialog: {
       dialogTitle: "HSL:n tai Liikennöisijän lähtöketju"
+    },
+    journeyBulletinsDialog: {
+      dialogTitle: "Lähdön aikana voimassa olleet tiedotteet"
+    },
+    journeyDeviationDialog: {
+      dialogTitle: "Lähdön poikkeamatiedot"
     }
   },
   en: {}
