@@ -17,14 +17,19 @@ class TsMap extends Component {
 
   render() {
     this.map.setFeatures(
-      this.map.journeyPatternStopLayer,
-      TsMapConvUtil.convertJourneyPatternToGeometryFeatures(
+      this.map.journeyPatternLineLayer,
+      TsMapConvUtil.convertJourneyPatternLinksToGeometryLineStrings(
         this.props.selected.journeyPatternLinks));
 
     this.map.setFeatures(
       this.map.vehicleJourneyLocationLayer,
       TsMapConvUtil.convertVehicleLocationsToGeometryFeatures(
         this.props.selectedVehicleLocations.vehicleLocations));
+
+    this.map.setFeatures(
+      this.map.journeyPatternStopLayer,
+      TsMapConvUtil.convertJourneyPatternLinkStopsToGeometryPoints(
+        this.props.selected.journeyPatternLinks));
 
     return (
       <div id="map" className="TsMap"/>

@@ -75,12 +75,6 @@ const TsMapConvUtil = {
     });
   },
 
-  convertJourneyPatternToGeometryFeatures: function(journeyPatternLinks) {
-
-    return TsMapConvUtil.convertJourneyPatternLinkStopsToGeometryPoints(journeyPatternLinks).concat(
-      TsMapConvUtil.convertJourneyPatternLinksToGeometryLineStrings(journeyPatternLinks));
-  },
-
   /**
    * Vehicle location related utils
    */
@@ -156,13 +150,17 @@ class TsMapService {
         url: TsConfiguration.map.baseMapUrl
       })
     });
-    this.journeyPatternStopLayer = new ol.layer.Vector({
+    this.journeyPatternLineLayer = new ol.layer.Vector({
       source: new ol.source.Vector(),
-      zIndex: 40
+      zIndex: 30
     });
     this.vehicleJourneyLocationLayer = new ol.layer.Vector({
       source: new ol.source.Vector(),
-      zIndex: 30
+      zIndex: 40
+    });
+    this.journeyPatternStopLayer = new ol.layer.Vector({
+      source: new ol.source.Vector(),
+      zIndex: 50
     });
     this.view = new ol.View({
       center: TsMapConvUtil.converToBasemapProjection(TsConfiguration.map.initialCenter),
@@ -175,8 +173,9 @@ class TsMapService {
       target: mapTargetTag,
       layers: [
         this.baseMapLayer,
-        this.journeyPatternStopLayer,
-        this.vehicleJourneyLocationLayer
+        this.journeyPatternLineLayer,
+        this.vehicleJourneyLocationLayer,
+        this.journeyPatternStopLayer
       ],
       view: this.view,
       controls: [this.zoomControl]

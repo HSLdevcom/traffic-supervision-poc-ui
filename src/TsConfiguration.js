@@ -10,11 +10,11 @@ const TsConfiguration = {
       latitude: 60.192059
     },
     journeyPattern: {
-      linkColor: 'rgba(0,64,255,0.6)',
+      linkColor: '#007ac9',
       linkLineWidth: 8
     },
     vehicleLocation: {
-      linkColor: 'red',
+      linkColor: '#f44262',
       linkLineWidth: 8
     }
   },
