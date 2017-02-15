@@ -29,15 +29,14 @@ const TsMapConvUtil = {
         new ol.style.Style({// marker style
         image: new ol.style.Icon({
           src: BusStopMarker,
-          scale: 0.5
+          scale: 0.35
         })
       }),
         new ol.style.Style({// marker label style
           text: new ol.style.Text({
             text: stop.name,
-            fontFamily: 'Rototo,sans-serif',
-            offsetY: 25,
-            scale: 1.5,
+            font: 'normal 12px Rototo,sans-serif',
+            offsetY: 15,
             stroke: new ol.style.Stroke({
               color: "white",
               width: 2
