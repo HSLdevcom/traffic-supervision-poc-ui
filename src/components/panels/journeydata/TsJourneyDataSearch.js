@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {List, ListItem} from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
+import AvLoop from 'material-ui/svg-icons/av/loop'
 import {TsJourneyPatternParsers} from '../../../util/TsParsers';
 import {TsCommonStyle} from '../../../TsConfiguration';
 import '../../../styles/common/TsRow.css'
@@ -14,8 +15,8 @@ class TsJourneyDataSearch extends Component {
   render() {
     const switchDirectionButtonStyle = {
       height: TsCommonStyle.raisedButton.height,
-      minWidth:'20px',
-      width: '20px'
+      minWidth:'25px',
+      width: '25px'
     };
     const nextPreviousButtonStyle = {
       height: TsCommonStyle.raisedButton.height,
@@ -31,7 +32,9 @@ class TsJourneyDataSearch extends Component {
               <div className="TsRowTitle">{this.props.localisedStrings.line}</div>
               <span className="TsRowContent">
                 <div className="TsRowContentItem">{TsJourneyPatternParsers.getJourneyPatternDescription(DummyJourneyPatterns[0])}</div>
-                <RaisedButton className="TsRowContentItem" primary={true} style={switchDirectionButtonStyle} label="<>"/>
+                <RaisedButton className="TsRowContentItem TsDirectionSwitchButton" primary={true}
+                              style={switchDirectionButtonStyle}
+                              icon={<AvLoop viewBox="0 0 24 28"/>} />
               </span>
           </ListItem>
           <ListItem className="TsRow TsTimeSelect" disabled={true}>
