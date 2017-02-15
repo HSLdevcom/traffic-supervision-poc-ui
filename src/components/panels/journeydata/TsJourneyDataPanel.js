@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import TsDrawerPanel from '../../common/TsDrawerPanel';
 import TsJourneyDataSearch from './TsJourneyDataSearch'
-import TsJourneyData from './TsJourneyDataInformation'
+import TsJourneyDataInformation from './TsJourneyDataInformation'
+import TsJourneyDataWeather from './TsJourneyDataWeather'
 
 class TsJourneyDataPanel extends Component {
 
@@ -28,7 +29,8 @@ class TsJourneyDataPanel extends Component {
         <TsDrawerPanel panelVisible={this.state.panelVisible}
                        setPanelVisible={this.setPanelVisible}>
           <TsJourneyDataSearch localisedStrings={this.props.localisedStrings}/>
-          <TsJourneyData localisedStrings={this.props.localisedStrings}/>
+          <TsJourneyDataInformation localisedStrings={this.props.localisedStrings}/>
+          <TsJourneyDataWeather localisedStrings={this.props.localisedStrings}/>
         </TsDrawerPanel>
       </div>
     );
