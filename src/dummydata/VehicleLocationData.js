@@ -9,7 +9,7 @@ const DummyVehicleLocationData =
       'longitude' : 24.9438825,
       'timestamp': '2017-02-03T07:02:01.000'
     }, {
-      'latitude' : 60.1705075,
+      'latitude' : 60.1707075,
       'longitude' : 24.9444065,
       'timestamp': '2017-02-03T07:02:02.000'
     }, {
@@ -46,7 +46,7 @@ const DummyVehicleLocationData =
       'timestamp': '2017-02-03T07:02:11.000'
     }, {
       'latitude' : 60.1727745,
-      'longitude' : 24.9486335,
+      'longitude' : 24.9489335,
       'timestamp': '2017-02-03T07:02:12.000'
     }, {
       'latitude' : 60.1730515,
@@ -114,7 +114,7 @@ const DummyVehicleLocationData =
       'timestamp': '2017-02-03T07:03:02.000'
     }, {
       'latitude' : 60.1788485,
-      'longitude' : 24.9502675,
+      'longitude' : 24.9505675,
       'timestamp': '2017-02-03T07:03:05.000'
     }, {
       'latitude' : 60.1788485,
@@ -174,7 +174,7 @@ const DummyVehicleLocationData =
       'timestamp': '2017-02-03T07:04:14.000'
     }, {
       'latitude' : 60.1840965,
-      'longitude' : 24.9594845,
+      'longitude' : 24.9590845,
       'timestamp': '2017-02-03T07:04:15.000'
     }, {
       'latitude' : 60.1845675,
@@ -242,7 +242,7 @@ const DummyVehicleLocationData =
       'timestamp': '2017-02-03T07:04:32.000'
     }, {
       'latitude' : 60.1882055,
-      'longitude' : 24.9634615,
+      'longitude' : 24.9644615,
       'timestamp': '2017-02-03T07:04:33.000'
     }, {
       'latitude' : 60.22964,
