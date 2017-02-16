@@ -217,4 +217,9 @@ class TsVehicleDataSearch extends React.Component {
   }
 }
 
-export default connect()(TsVehicleDataSearch)
+const mapStateToProps = function(store) {
+  return {
+    selectedMonitoredVehicle: store.vehiclesState.selected.monitoredVehicle
+  };
+};
+export default connect(mapStateToProps)(TsVehicleDataSearch)

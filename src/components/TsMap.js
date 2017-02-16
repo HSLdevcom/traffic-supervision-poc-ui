@@ -22,14 +22,16 @@ class TsMap extends Component {
         this.props.selected.journeyPatternLinks));
 
     this.map.setFeatures(
-      this.map.vehicleJourneyLocationLayer,
-      TsMapConvUtil.convertVehicleLocationsToGeometryFeatures(
-        this.props.selectedVehicleLocations));
-
-    this.map.setFeatures(
       this.map.journeyPatternStopLayer,
       TsMapConvUtil.convertJourneyPatternLinkStopsToGeometryPoints(
         this.props.selected.journeyPatternLinks));
+
+    if (this.props.selectedVehicleLocations.length > 0) {
+      this.map.setFeatures(
+        this.map.vehicleJourneyLocationLayer,
+        TsMapConvUtil.convertVehicleLocationsToGeometryFeatures(
+          this.props.selectedVehicleLocations));
+    }
 
     return (
       <div id="map" className="TsMap"/>

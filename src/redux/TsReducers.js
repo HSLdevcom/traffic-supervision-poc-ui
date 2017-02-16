@@ -90,24 +90,36 @@ const TsStopReducers = function(state = initialStopsState, action) {
  */
 const initialVehiclesState = {
   selected: {
-    vehicleLocations: []
+    vehicleLocations: [],
+    monitoredVehicle: {}
   }
 };
+//todo; handle action state merges better
 const TsVehicleReducers = function(state = initialVehiclesState, action) {
   if (action.type === 'SET_SELECTED_VEHICLE_LOCATIONS') {
     return Object.assign({}, state,
       { selected: {
-        vehicleLocations: action.vehicleLocations
+        vehicleLocations: action.vehicleLocations,
+        monitoredVehicle: state.selected.monitoredVehicle
         }
       }
     )
   } else if (action.type === 'CLEAR_SELECTED_VEHICLE_LOCATIONS') {
     return Object.assign({}, state,
       { selected: {
-        vehicleLocations: []
+        vehicleLocations: [],
+        monitoredVehicle: state.selected.monitoredVehicle
         }
       }
     )
+  } else if (action.type === 'SET_SELECTED_MONITORED_VEHICLE') {
+    return Object.assign({}, state,
+      { selected: {
+        monitoredVehicle: action.monitoredVehicle,
+        vehicleLocations: state.selected.vehicleLocations
+        }
+      }
+    );
   }
 
   return state;

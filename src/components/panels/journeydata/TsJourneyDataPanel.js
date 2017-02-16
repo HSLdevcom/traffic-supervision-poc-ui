@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {TsVehicleActions} from './../../../redux/TsActions'
 import TsDrawerPanel from '../../common/TsDrawerPanel';
 import TsJourneyDataSearch from './TsJourneyDataSearch'
 import TsJourneyDataInformation from './TsJourneyDataInformation'
@@ -20,7 +21,11 @@ class TsJourneyDataPanel extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setPanelVisible(nextProps.selected.journey.journeyId !== undefined);
+    const isSelectedJourney = nextProps.selected.journey.journeyId !== undefined;
+    this.setPanelVisible(isSelectedJourney);
+    if (isSelectedJourney) {
+      this.props.dispatch(TsVehicleActions.setSelectedMonitoredVehicle(nextProps.selected.journey.monitored.vehicles[0]));
+    }
   }
 
   render() {
