@@ -17,14 +17,14 @@ class TsDrawerPanel extends Component {
   }
 
   render() {
-    var toggleLabel = function (label) {
+    const toggleLabel = function (label) {
       return label === '>' ? '<' : '>';
     };
-
     let drawerToggleButtonStyle = {
       width: TsCommonStyle.tsPanel.openCloseButton.width,
       position: TsCommonStyle.tsPanel.openCloseButton.position,
       top: TsCommonStyle.tsPanel.openCloseButton.top(),
+      visibility: this.props.panelToggleButtonVisible ? 'visible' : 'hidden'
     };
     let buttonLabel = '>';
     if (this.props.openSecondary) {

@@ -19,18 +19,23 @@ class TsJourneyPatternPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      panelVisible: false
+      panelVisible: false,
+      panelToggleButtonVisible: false
     };
     this.setPanelVisible = this.setPanelVisible.bind(this);
     this.stopClickedOnTable = this.stopClickedOnTable.bind(this);
   }
 
-  setPanelVisible(visible) {
-    this.setState({ panelVisible: visible });
+  setPanelVisible(visible, nextProps) {
+    const propsToUse = nextProps ? nextProps : this.props;
+    this.setState({
+      panelVisible: visible,
+      panelToggleButtonVisible: propsToUse.selected.journeyPattern.id !== undefined
+    });
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setPanelVisible(nextProps.selected.journeyPattern.id !== undefined);
+    this.setPanelVisible(nextProps.selected.journeyPattern.id !== undefined, nextProps);
   };
 
   stopClickedOnTable(rowNumber, columnNumber, event) {
@@ -69,6 +74,7 @@ class TsJourneyPatternPanel extends Component {
     <div className="TsJourneyPatternPanel">
       <TsDrawerPanel children={contentInsideDrawer}
                      panelVisible={this.state.panelVisible}
+                     panelToggleButtonVisible={this.state.panelToggleButtonVisible}
                      setPanelVisible={this.setPanelVisible}/>
     </div>
     );

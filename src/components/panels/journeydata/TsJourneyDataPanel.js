@@ -11,18 +11,23 @@ class TsJourneyDataPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      panelVisible: false
+      panelVisible: false,
+      panelToggleButtonVisible: false
     };
     this.setPanelVisible = this.setPanelVisible.bind(this);
   }
 
-  setPanelVisible(visible) {
-    this.setState({ panelVisible: visible });
+  setPanelVisible(visible, nextProps) {
+    const propsToUse = nextProps ? nextProps : this.props;
+    this.setState({
+      panelVisible: visible,
+      panelToggleButtonVisible: propsToUse.selected.journey.journeyId !== true
+    });
   }
 
   componentWillReceiveProps(nextProps) {
     const isSelectedJourney = nextProps.selected.journey.journeyId !== undefined;
-    this.setPanelVisible(isSelectedJourney);
+    this.setPanelVisible(isSelectedJourney, nextProps);
     if (isSelectedJourney) {
       this.props.dispatch(TsVehicleActions.setSelectedMonitoredVehicle(nextProps.selected.journey.monitored.vehicles[0]));
     }
@@ -32,6 +37,7 @@ class TsJourneyDataPanel extends Component {
     return (
       <div className="TsJourneyDataPanel">
         <TsDrawerPanel panelVisible={this.state.panelVisible}
+                       panelToggleButtonVisible={this.state.panelToggleButtonVisible}
                        setPanelVisible={this.setPanelVisible}>
           <TsJourneyDataSearch localisedStrings={this.props.localisedStrings}/>
           <TsJourneyDataInformation localisedStrings={this.props.localisedStrings}/>

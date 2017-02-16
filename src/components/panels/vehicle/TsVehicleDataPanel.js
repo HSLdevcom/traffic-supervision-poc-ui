@@ -43,6 +43,7 @@ class TsVehicleDataPanel extends Component {
         <TsDrawerPanel children={contentInsideDrawer}
                        openSecondary={true}
                        panelVisible={this.state.panelVisible}
+                       panelToggleButtonVisible={true}
                        setPanelVisible={this.setPanelVisible}/>
       </div>
     );
