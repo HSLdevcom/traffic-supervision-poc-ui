@@ -163,7 +163,7 @@ class TsMapService {
     });
     this.view = new ol.View({
       center: TsMapConvUtil.converToBasemapProjection(TsConfiguration.map.initialCenter),
-      zoom: 12
+      zoom: 13
     });
   };
 
