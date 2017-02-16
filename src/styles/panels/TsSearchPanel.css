@@ -2,3 +2,7 @@
   height: 90px;
   position: absolute;
 }
+
+.TsSearchPanel .AutoComplete{
+  font-size: 14px !important;
+}
