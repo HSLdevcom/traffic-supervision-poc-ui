@@ -23,7 +23,8 @@ class TsVehicleDataPanel extends Component {
 
   handleVehicleDataSelected(data) {
     this.setState({
-      vehicleData: data
+      vehicleData: data,
+      panelVisible: true
     });
   }
   render() {
