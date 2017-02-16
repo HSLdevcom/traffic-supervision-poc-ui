@@ -16,11 +16,12 @@ class TsVehicleDataSearch extends React.Component {
     super(props);
     this.state = {
       selectedOperator: DummyOperators[0].id,
-      selectedVehicleId: "",
-      timeStart: "",
-      timeStop: "",
-      timeStartValid: false,
-      timeStopValid: false,
+      vehicleBasicData: DummyVehicleBasicData,
+      selectedVehicleId: "4444",
+      timeStart: "10:00",
+      timeStop: "11:00",
+      timeStartValid: true,
+      timeStopValid: true,
       showVehicleData: false
     };
 
@@ -31,6 +32,24 @@ class TsVehicleDataSearch extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderVehicleData = this.renderVehicleData.bind(this);
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedMonitoredVehicle !== undefined) {
+      this.setState({
+        selectedVehicleId: nextProps.selectedMonitoredVehicle.sideNumber,
+        vehicleBasicData: nextProps.selectedMonitoredVehicle,
+        showVehicleData: true
+      });
+
+      this.processVehicleLocations();
+
+      this.props.handleVehicleDataSelected({
+        // TODO: operator data not update because not used yet
+        start: this.state.timeStart,
+        stop: this.state.timeStop
+      });
+    }
+  };
 
   handleOperatorChange(event) {
     this.setState({selectedOperator: event.target.value});
@@ -93,6 +112,7 @@ class TsVehicleDataSearch extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
     let operatorData = {};
 
     for (let i = 0; i < DummyOperators.length; i++) {
@@ -101,15 +121,16 @@ class TsVehicleDataSearch extends React.Component {
       }
     }
 
+    this.setState({
+        showVehicleData : true
+    });
+
     this.processVehicleLocations();
 
     this.props.handleVehicleDataSelected({
       operator: operatorData,
       start: this.state.timeStart,
       stop: this.state.timeStop
-    });
-    this.setState({
-      showVehicleData : true
     });
   }
 
@@ -122,9 +143,9 @@ class TsVehicleDataSearch extends React.Component {
               {this.props.localisedStrings.vehicleDataSearch.vehicleInfoLabel}:
             </label>
             <label className="VehicleBasicData">
-              {DummyVehicleBasicData.sideNumber},
-              {DummyVehicleBasicData.age}v,
-              {DummyVehicleBasicData.vehicleClass}
+              {this.state.vehicleBasicData.sideNumber},
+              {this.state.vehicleBasicData.age}v,
+              {this.state.vehicleBasicData.vehicleClass}
             </label>
           </td>
         </tr>
