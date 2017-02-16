@@ -64,7 +64,7 @@ const TsStopActions = {
 };
 
 /**
- * Actions related to vehicle location
+ * Actions related to vehicle
  */
 const setSelectedVehicleLocations = function(vehicleLocations) {
   return {
@@ -79,7 +79,7 @@ const clearSelectedVehicleLocations = function() {
   }
 };
 
-const TsVehicleLocationActions = {
+const TsVehicleActions = {
   setSelectedVehicleLocations: setSelectedVehicleLocations,
   clearSelectedVehicleLocations: clearSelectedVehicleLocations
 };
@@ -133,7 +133,7 @@ export {
   TsJourneyPatternActions,
   TsJourneyActions,
   TsStopActions,
-  TsVehicleLocationActions,
+  TsVehicleActions,
   TsJourneyBulletinsActions,
   TsJourneyDeviationActions
 }

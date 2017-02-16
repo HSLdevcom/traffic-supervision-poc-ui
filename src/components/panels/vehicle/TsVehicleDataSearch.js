@@ -3,7 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import moment from 'moment';
 import "moment/locale/fi";
 import {connect} from 'react-redux';
-import {TsVehicleLocationActions} from '../../../redux/TsActions';
+import {TsVehicleActions} from '../../../redux/TsActions';
 import {TsConfiguration} from '../../../TsConfiguration.js'
 import {DummyOperators} from '../../../dummydata/Operators.js'
 import {DummyVehicleBasicData} from '../../../dummydata/VehicleBasicData.js'
@@ -87,7 +87,7 @@ class TsVehicleDataSearch extends React.Component {
     journeys.push(journey);
 
     this.props.dispatch(
-      TsVehicleLocationActions.setSelectedVehicleLocations(
+      TsVehicleActions.setSelectedVehicleLocations(
         journeys));
   }
 
@@ -217,10 +217,4 @@ class TsVehicleDataSearch extends React.Component {
   }
 }
 
-const mapStateToProps = function(store) {
-  return {
-    setSelectedVehicleLocation: store.vehicleLocationState.selected
-  };
-};
-
-export default connect(mapStateToProps)(TsVehicleDataSearch)
+export default connect()(TsVehicleDataSearch)

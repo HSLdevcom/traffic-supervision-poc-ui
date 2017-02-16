@@ -86,26 +86,26 @@ const TsStopReducers = function(state = initialStopsState, action) {
 };
 
 /**
- * Reducers related to vehicle location
+ * Reducers related to vehicle
  */
-const initialVehicleLocationState = {
+const initialVehiclesState = {
   selected: {
     vehicleLocations: []
   }
 };
-const TsVechicleLocationReducers = function(state = initialVehicleLocationState, action) {
+const TsVehicleReducers = function(state = initialVehiclesState, action) {
   if (action.type === 'SET_SELECTED_VEHICLE_LOCATIONS') {
     return Object.assign({}, state,
       { selected: {
         vehicleLocations: action.vehicleLocations
-      }
+        }
       }
     )
   } else if (action.type === 'CLEAR_SELECTED_VEHICLE_LOCATIONS') {
     return Object.assign({}, state,
       { selected: {
         vehicleLocations: []
-      }
+        }
       }
     )
   }
@@ -168,7 +168,7 @@ export {
   TsJourneyPatternReducers,
   TsJourneyReducers,
   TsStopReducers,
-  TsVechicleLocationReducers,
+  TsVehicleReducers,
   TsJourneyBulletinsReducers,
   TsJourneyDeviationReducers
 }

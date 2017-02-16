@@ -6,7 +6,7 @@ import {createStore, combineReducers} from 'redux'
 import {TsJourneyPatternReducers,
         TsJourneyReducers,
         TsStopReducers,
-        TsVechicleLocationReducers,
+        TsVehicleReducers,
         TsJourneyBulletinsReducers,
         TsJourneyDeviationReducers} from './redux/TsReducers'
 import './styles/index.css';
@@ -15,7 +15,7 @@ const reducers = combineReducers({
   journeyPatternsState: TsJourneyPatternReducers,
   journeysState: TsJourneyReducers,
   stopsState: TsStopReducers,
-  vehicleLocationState: TsVechicleLocationReducers,
+  vehiclesState: TsVehicleReducers,
   journeyBulletinsState: TsJourneyBulletinsReducers,
   journeyDeviationState: TsJourneyDeviationReducers,
 });
