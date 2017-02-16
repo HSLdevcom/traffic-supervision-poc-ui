@@ -51,7 +51,8 @@ const localisation = {
         "TLP_ACK": "Liikennevaloetuisuus kuittaus",
         "STOP_ARRIVAL": "Pysäkille saapuminen",
         "STOP_DEPARTURE": "Pysäkiltä lähteminen",
-        "BUS_FULL": "Bussi täynnä",
+        "BUS_FULL_ON": "Bussi täynnä päälle",
+        "BUS_FULL_OFF": "Bussi täynnä pois päältä",
         "JOURNEY_SIGNOFF": "Lähdöltä poiskirjautuminen"
       },
       eventDataTypes: {

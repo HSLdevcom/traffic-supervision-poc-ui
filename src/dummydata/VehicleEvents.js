@@ -73,7 +73,14 @@ const DummyVehicleEvents = [
     'id': '79904567875',
     'timestamp': '2017-02-03T07:11:00.000',
     'type': 'BUS_FULL',
-    'subtype': 'BUS_FULL',
+    'subtype': 'BUS_FULL_ON',
+    'eventData': {'attributeX': 'valueX'}
+  },
+  {
+    'id': '79904567885',
+    'timestamp': '2017-02-03T07:12:00.000',
+    'type': 'BUS_FULL',
+    'subtype': 'BUS_FULL_OFF',
     'eventData': {'attributeX': 'valueX'}
   },
   {
