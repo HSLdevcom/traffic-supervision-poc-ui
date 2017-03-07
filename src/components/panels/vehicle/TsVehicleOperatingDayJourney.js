@@ -13,8 +13,6 @@ import {DummyJourneyData} from '../../../dummydata/JourneyData'; //todo; replace
 class TsVehicleOperatingDayJourney extends Component {
 
   handleClicked(id) {
-    console.log(this.props.data);
-    console.log("Link clicked: " + id);
     this.props.dispatch(TsJourneyActions.setSelectedJourney(DummyJourneyData));
   }
 

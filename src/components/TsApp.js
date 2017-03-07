@@ -6,6 +6,7 @@ import TsJourneyPatternPanel from './panels/TsJourneyPatternPanel.js';
 import TsJourneyDataPanel from './panels/journeydata/TsJourneyDataPanel';
 import TsDaySelectPanel from './panels/TsDaySelectPanel.js';
 import TsVehicleDataPanel from './panels/vehicle/TsVehicleDataPanel.js';
+import TsGraphPanel from './panels/TsGraphPanel.js'
 import TsDialogHandler from './dialogs/TsDialogHandler';
 import LocalizedStrings from 'react-localization';
 import { getLocalisation } from '../TsLocalisation';
@@ -35,6 +36,7 @@ class TsApp extends Component {
         <TsDaySelectPanel localisedStrings={this.state.localisedStrings}/>
         <TsVehicleDataPanel localisedStrings={this.state.localisedStrings}/>
         <TsDialogHandler localisedStrings={this.state.localisedStrings}/>
+        <TsGraphPanel localisedStrings={this.state.localisedStrings}/>
       </div>
     );
   }

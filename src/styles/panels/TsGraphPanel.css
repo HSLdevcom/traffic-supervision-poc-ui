@@ -1,0 +1,9 @@
+.TsGraphPanel {
+  position: fixed;
+  left: 50%;
+  bottom: 0%;
+  transform: translateX(-50%);
+  background-color: white;
+  width: calc(100% - 810px);
+  height: 300px;
+}

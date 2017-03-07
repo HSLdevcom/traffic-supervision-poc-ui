@@ -3,6 +3,7 @@ import moment from 'moment';
 import "moment/locale/fi";
 import {TsJourneyPatternParsers} from '../util/TsParsers';
 import BusStopMarker from '../styles/icons/markers/bus_stop.svg'
+import VehicleLocationMarker from '../styles/icons/markers/vehicle_location.svg'
 import {TsConfiguration} from '../TsConfiguration'
 
 /**
@@ -133,6 +134,38 @@ const TsMapConvUtil = {
     });
 
     return features;
+  },
+
+  convertVehicleLocationPointToGeometryFeatures: function(vehicleLocationPoint) {
+    if (vehicleLocationPoint.timestamp === undefined) {
+      return [];
+    }
+
+    const geometryPoint = new ol.Feature({
+      geometry: new ol.geom.Point(TsMapConvUtil.converToBasemapProjection(vehicleLocationPoint))
+    });
+
+    geometryPoint.setStyle([
+      new ol.style.Style({// marker style
+      image: new ol.style.Icon({
+        src: VehicleLocationMarker,
+        scale: 0.35
+      })
+    }),
+      new ol.style.Style({// marker label style
+        text: new ol.style.Text({
+          text: vehicleLocationPoint.timestamp.slice(-9),
+          font: 'normal 12px Rototo,sans-serif',
+          offsetY: 15,
+          stroke: new ol.style.Stroke({
+            color: "white",
+            width: 2
+          })
+        })
+      })
+    ]);
+
+    return [geometryPoint];
   }
 };
 
@@ -161,6 +194,10 @@ class TsMapService {
       source: new ol.source.Vector(),
       zIndex: 50
     });
+    this.vehicleJourneyLocationPointLayer = new ol.layer.Vector({
+      source: new ol.source.Vector(),
+      zIndex: 60
+    });
     this.view = new ol.View({
       center: TsMapConvUtil.converToBasemapProjection(TsConfiguration.map.initialCenter),
       zoom: 13
@@ -174,6 +211,7 @@ class TsMapService {
         this.baseMapLayer,
         this.journeyPatternLineLayer,
         this.vehicleJourneyLocationLayer,
+        this.vehicleJourneyLocationPointLayer,
         this.journeyPatternStopLayer
       ],
       view: this.view,

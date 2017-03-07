@@ -86,10 +86,25 @@ const setSelectedMonitoredVehicle = function(monitoredVehicle) {
   }
 };
 
+const setVehicleLocationPoint = function(location) {
+  return {
+    type: 'SET_VEHICLE_LOCATION_POINT',
+    vehicleLocationPoint: location
+  }
+};
+
+const clearVehicleLocationPoint = function() {
+  return {
+    type: 'CLEAR_VEHICLE_LOCATION_POINT'
+  }
+};
+
 const TsVehicleActions = {
   setSelectedVehicleLocations: setSelectedVehicleLocations,
   clearSelectedVehicleLocations: clearSelectedVehicleLocations,
-  setSelectedMonitoredVehicle: setSelectedMonitoredVehicle
+  setSelectedMonitoredVehicle: setSelectedMonitoredVehicle,
+  setVehicleLocationPoint: setVehicleLocationPoint,
+  clearVehicleLocationPoint: clearVehicleLocationPoint
 };
 
 /**

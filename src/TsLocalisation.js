@@ -91,7 +91,11 @@ const localisation = {
     },
     journeyDeviationDialog: {
       dialogTitle: "Lähdön poikkeamatiedot"
+    },
+    vehicleGraph: {
+      titleSpeed: "Nopeus [km/h]"
     }
+
   },
   en: {}
 };

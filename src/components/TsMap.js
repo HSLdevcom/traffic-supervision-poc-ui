@@ -26,11 +26,20 @@ class TsMap extends Component {
       TsMapConvUtil.convertJourneyPatternLinkStopsToGeometryPoints(
         this.props.selected.journeyPatternLinks));
 
-    if (this.props.selectedVehicleLocations.length > 0) {
+    if (this.props.selectedVehicleLocations !== undefined &&
+        this.props.selectedVehicleLocations.length > 0) {
       this.map.setFeatures(
         this.map.vehicleJourneyLocationLayer,
         TsMapConvUtil.convertVehicleLocationsToGeometryFeatures(
           this.props.selectedVehicleLocations));
+    }
+
+    if (this.props.selectedVehicleLocationPoint !== undefined) {
+      this.map.vehicleJourneyLocationPointLayer.getSource().clear();
+      this.map.setFeatures(
+        this.map.vehicleJourneyLocationPointLayer,
+        TsMapConvUtil.convertVehicleLocationPointToGeometryFeatures(
+          this.props.selectedVehicleLocationPoint));
     }
 
     return (
@@ -42,7 +51,8 @@ class TsMap extends Component {
 const mapStateToProps = function(store) {
   return {
     selected: store.journeyPatternsState.selected,
-    selectedVehicleLocations: store.vehiclesState.selected.vehicleLocations
+    selectedVehicleLocations: store.vehiclesState.selected.vehicleLocations,
+    selectedVehicleLocationPoint: store.vehiclesState.selected.vehicleLocationPoint
   };
 };
 export default connect(mapStateToProps)(TsMap);

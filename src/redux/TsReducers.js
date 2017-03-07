@@ -120,6 +120,20 @@ const TsVehicleReducers = function(state = initialVehiclesState, action) {
         }
       }
     );
+  } else if (action.type === 'SET_VEHICLE_LOCATION_POINT') {
+    return Object.assign({}, state,
+      { selected: {
+        vehicleLocationPoint: action.vehicleLocationPoint
+        }
+      }
+    );
+  } else if (action.type === 'CLEAR_VEHICLE_LOCATION_POINT') {
+    return Object.assign({}, state,
+      { selected: {
+        vehicleLocationPoint: {}
+        }
+      }
+    );
   }
 
   return state;
