@@ -2,16 +2,57 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {TsVehicleActions} from '../../redux/TsActions';
 import '../../styles/panels/TsGraphPanel.css';
-import {Line} from 'react-chartjs-2';
+import {Chart, Line} from 'react-chartjs-2';
+
+const linePointerColor = "#EC407A";
+
+var mouseX = 0;
+
+var parentEventHandler = Chart.Controller.prototype.eventHandler;
+Chart.Controller.prototype.eventHandler = function() {
+  var ret = parentEventHandler.apply(this, arguments);
+
+  this.clear();
+  this.draw();
+
+  var yScale = this.scales['y-axis-0'];
+
+  this.chart.ctx.beginPath();
+  this.chart.ctx.moveTo(arguments[0].x, yScale.getPixelForValue(yScale.max));
+  this.chart.ctx.strokeStyle = linePointerColor;
+  this.chart.ctx.lineTo(arguments[0].x, yScale.getPixelForValue(yScale.min));
+  this.chart.ctx.stroke();
+
+  return ret;
+};
 
 class TsGraphPanel extends Component {
+
   constructor() {
     super();
     this.state = {
       speedData : [],
       timeLabels : [],
-      locationData: []
+      locationData : []
     };
+  }
+
+  componentWillMount() {
+    Chart.pluginService.register({
+      afterDraw: function (chart, easing) {
+        if (chart === undefined) {
+          return;
+        }
+        var ctx = chart.chart.canvas.getContext("2d");
+        var yScale = chart.scales['y-axis-0'];
+
+        ctx.beginPath();
+        ctx.moveTo(mouseX, yScale.getPixelForValue(yScale.max));
+        ctx.strokeStyle = linePointerColor;
+        ctx.lineTo(mouseX, yScale.getPixelForValue(yScale.min));
+        ctx.stroke();
+      }
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -69,12 +110,14 @@ class TsGraphPanel extends Component {
           fill: true,
           data: this.state.speedData
         },
-      ]
+      ],
     };
 
     const options = {
       maintainAspectRatio: false,
       hover: {
+        mode: 'x',
+        intersect: false,
         onHover: (event, active) => {
           if (active !== undefined && active.length > 0) {
             this.props.dispatch(
@@ -83,6 +126,8 @@ class TsGraphPanel extends Component {
           } else {
             this.props.dispatch(TsVehicleActions.clearVehicleLocationPoint());
           }
+
+          mouseX = event.x - 405;
         }
       },
       scales: {
@@ -94,12 +139,12 @@ class TsGraphPanel extends Component {
             }
           }
         }]
-      }
+      },
     };
 
     return (
       <div className="TsGraphPanel">
-        <Line data={data} options={options} height={300}/>
+        <Line ref='chart' data={data} options={options} height={300}/>
       </div>
     );
   }
