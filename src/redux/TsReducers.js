@@ -91,7 +91,9 @@ const TsStopReducers = function(state = initialStopsState, action) {
 const initialVehiclesState = {
   selected: {
     vehicleLocations: [],
-    monitoredVehicle: {}
+    monitoredVehicle: {},
+    vehicleLocationPoint: {}
+
   }
 };
 //todo; handle action state merges better
@@ -100,7 +102,7 @@ const TsVehicleReducers = function(state = initialVehiclesState, action) {
     return Object.assign({}, state,
       { selected: {
         vehicleLocations: action.vehicleLocations,
-        monitoredVehicle: state.selected.monitoredVehicle
+//        monitoredVehicle: state.selected.monitoredVehicle
         }
       }
     )
@@ -108,7 +110,7 @@ const TsVehicleReducers = function(state = initialVehiclesState, action) {
     return Object.assign({}, state,
       { selected: {
         vehicleLocations: [],
-        monitoredVehicle: state.selected.monitoredVehicle
+//        monitoredVehicle: state.selected.monitoredVehicle
         }
       }
     )
@@ -116,7 +118,7 @@ const TsVehicleReducers = function(state = initialVehiclesState, action) {
     return Object.assign({}, state,
       { selected: {
         monitoredVehicle: action.monitoredVehicle,
-        vehicleLocations: state.selected.vehicleLocations
+//        vehicleLocations: state.selected.vehicleLocations
         }
       }
     );

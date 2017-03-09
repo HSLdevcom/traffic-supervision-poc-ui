@@ -86,11 +86,11 @@ class TsGraphPanel extends Component {
       }
     }
 
-    this.state = {
+    this.setState({
       speedData : data,
       timeLabels : labels,
       locationData : locationData
-    };
+    });
   };
 
   render() {
