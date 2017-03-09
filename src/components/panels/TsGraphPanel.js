@@ -4,8 +4,18 @@ import {TsVehicleActions} from '../../redux/TsActions';
 import '../../styles/panels/TsGraphPanel.css';
 import {Chart, Line} from 'react-chartjs-2';
 
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "zoomPlugin" }]*/
+import {zoomPlugin} from 'chartjs-plugin-zoom';
+
+Chart.defaults.global.defaultFontColor = 'rgba(93,93,93,1)';
+Chart.defaults.global.defaultFontFamily = 'Rototo,sans-serif';
+Chart.defaults.global.defaultFontSize = 10;
+Chart.defaults.global.defaultFontStyle = 'normal';
+
 const linePointerColor = "#EC407A";
 
+// Used for storing current mouse X-coordinate so that the line pointer
+// can be drawn to right position on the graph. Update from onHover callback.
 var mouseX = 0;
 
 var parentEventHandler = Chart.Controller.prototype.eventHandler;
@@ -39,7 +49,7 @@ class TsGraphPanel extends Component {
 
   componentWillMount() {
     Chart.pluginService.register({
-      afterDraw: function (chart, easing) {
+      afterDraw: function (chart) {
         if (chart === undefined) {
           return;
         }
@@ -105,8 +115,12 @@ class TsGraphPanel extends Component {
           label: this.props.localisedStrings.vehicleGraph.titleSpeed,
           spanGaps: false,
           lineTension: 0,
-          backgroundColor: 'rgba(75,192,192,0.4)',
-          borderColor: 'rgba(75,192,192,1)',
+          borderWidth: 1,
+          backgroundColor: 'rgba(38,198,218,0.4)',
+          borderColor: 'rgba(0,184,212,1)',
+          pointRadius: 2,
+          pointHoverBackgroundColor: "rgba(244,143,177,1)",
+          pointHoverBorderColor: "#EC407A",
           fill: true,
           data: this.state.speedData
         },
@@ -126,20 +140,46 @@ class TsGraphPanel extends Component {
           } else {
             this.props.dispatch(TsVehicleActions.clearVehicleLocationPoint());
           }
-
-          mouseX = event.x - 405;
+          mouseX = event.offsetX;
         }
+      },
+      legend:{
+       display:false
       },
       scales: {
         xAxes: [{
+          gridLines: {
+            lineWidth: 1,
+            color: "rgba(238,238,238,1)"
+          },
           type: 'time',
           time: {
+            format: 'HH:mm:ss',
             displayFormats: {
-              minute: 'HH:mm:ss'
+              minute: 'HH:mm:ss',
+              second: 'HH:mm:ss',
+              millisecond: 'HH:mm:ss'
             }
+          },
+          ticks: {
+            maxRotation: 0
           }
+        }],
+        yAxes: [{
+          gridLines: {
+            lineWidth: 1,
+            color: "rgba(238,238,238,1)"
+          },
         }]
       },
+      pan: {
+        enabled: true,
+        mode: 'x'
+      },
+      zoom: {
+        enabled: true,
+        mode: 'x',
+      }
     };
 
     return (
