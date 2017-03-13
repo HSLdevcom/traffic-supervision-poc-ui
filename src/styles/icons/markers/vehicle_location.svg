@@ -28,7 +28,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="12.984375"
-     inkscape:cx="-13.516245"
+     inkscape:cx="27.279987"
      inkscape:cy="25.555891"
      inkscape:current-layer="svg2985"
      showgrid="true"
@@ -51,19 +51,16 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <path
-     sodipodi:type="arc"
-     style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#26c6da;stroke-width:27.23463435;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-     id="path3074"
-     sodipodi:cx="14.941035"
-     sodipodi:cy="20.948256"
-     sodipodi:rx="26.87846"
-     sodipodi:ry="26.87846"
-     d="m 41.819495,20.948256 a 26.87846,26.87846 0 1 1 -53.75692,0 26.87846,26.87846 0 1 1 53.75692,0 z"
-     transform="matrix(0.78495639,0,0,0.78495639,20.233432,15.595042)" />
   <g
      inkscape:groupmode="layer"
      id="layer1"
      inkscape:label="disabled"
      style="display:inline" />
+  <ellipse
+     style="fill:#26c6da;fill-opacity:1;stroke:#26c6da;stroke-width:21.64424896;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="path4134"
+     cx="32"
+     cy="31.961493"
+     rx="20.699608"
+     ry="20.584084" />
 </svg>

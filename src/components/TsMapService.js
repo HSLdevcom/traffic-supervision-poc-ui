@@ -154,7 +154,7 @@ const TsMapConvUtil = {
     }),
       new ol.style.Style({// marker label style
         text: new ol.style.Text({
-          text: vehicleLocationPoint.timestamp.slice(-9),
+          text: moment(vehicleLocationPoint.timestamp).format("HH:mm:ss"),
           font: 'normal 12px Rototo,sans-serif',
           offsetY: 15,
           stroke: new ol.style.Stroke({

@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {TsVehicleActions} from '../../redux/TsActions';
-import '../../styles/panels/TsGraphPanel.css';
+import moment from 'moment';
+import "moment/locale/fi";
 import {Chart, Line} from 'react-chartjs-2';
+import '../../styles/panels/TsGraphPanel.css';
 
 /*eslint no-unused-vars: ["error", { "varsIgnorePattern": "zoomPlugin" }]*/
 import {zoomPlugin} from 'chartjs-plugin-zoom';
@@ -79,18 +81,18 @@ class TsGraphPanel extends Component {
     for (let lc = 0; lc < selectedLocations.length; lc++) {
       let locations = selectedLocations[lc];
       if (lc !== 0) {
-        labels.push(locations[0].timestamp);
+        labels.push(moment(locations[0].timestamp));
         data.push(0);
         locationData.push(locations[0]);
       }
       locations.forEach(function(location) {
-        labels.push(location.timestamp);
+        labels.push(moment(location.timestamp));
         data.push(location.speed);
         locationData.push(location);
       });
       if (lc !== selectedLocations.length - 1) {
         let last = locations.pop();
-        labels.push(last.timestamp);
+        labels.push(moment(last.timestamp));
         data.push(0);
         locationData.push(last);
       }
