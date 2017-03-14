@@ -191,6 +191,10 @@ class TsGraphPanel extends Component {
         yAxes: [{
           position: "left",
           id: "y-axis-0",
+          scaleLabel: {
+            display: true,
+            labelString: this.props.localisedStrings.vehicleGraph.titleSpeed,
+          },
           gridLines: {
             lineWidth: 1,
             color: "rgba(238,238,238,1)"
@@ -199,6 +203,10 @@ class TsGraphPanel extends Component {
         {
           position: "right",
           id: "y-axis-1",
+          scaleLabel: {
+            display: true,
+            labelString: this.props.localisedStrings.vehicleGraph.titleDelay,
+          },
         }]
       },
       pan: {
