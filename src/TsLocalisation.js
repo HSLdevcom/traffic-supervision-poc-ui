@@ -93,7 +93,8 @@ const localisation = {
       dialogTitle: "Lähdön poikkeamatiedot"
     },
     vehicleGraph: {
-      titleSpeed: "Nopeus [km/h]"
+      titleSpeed: "Nopeus [km/h]",
+      titleDelay: "Edellä/Myöhässä [min]"
     }
 
   },

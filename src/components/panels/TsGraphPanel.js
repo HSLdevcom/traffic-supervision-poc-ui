@@ -44,6 +44,7 @@ class TsGraphPanel extends Component {
     super();
     this.state = {
       speedData : [],
+      delayData : [],
       timeLabels : [],
       locationData : []
     };
@@ -74,7 +75,8 @@ class TsGraphPanel extends Component {
   };
 
   createGraphData(selectedLocations) {
-    var data = [];
+    var speedData = [];
+    var delayData = [];
     var labels = [];
     var locationData = [];
 
@@ -82,24 +84,28 @@ class TsGraphPanel extends Component {
       let locations = selectedLocations[lc];
       if (lc !== 0) {
         labels.push(moment(locations[0].timestamp));
-        data.push(0);
+        speedData.push(0);
+        delayData.push(0);
         locationData.push(locations[0]);
       }
       locations.forEach(function(location) {
         labels.push(moment(location.timestamp));
-        data.push(location.speed);
+        speedData.push(location.speed);
+        delayData.push((location.delay / 60).toFixed(2)); // Delay in minutes
         locationData.push(location);
       });
       if (lc !== selectedLocations.length - 1) {
         let last = locations.pop();
         labels.push(moment(last.timestamp));
-        data.push(0);
+        speedData.push(0);
+        delayData.push(0);
         locationData.push(last);
       }
     }
 
     this.setState({
-      speedData : data,
+      speedData : speedData,
+      delayData: delayData,
       timeLabels : labels,
       locationData : locationData
     });
@@ -115,6 +121,7 @@ class TsGraphPanel extends Component {
       datasets: [
         {
           label: this.props.localisedStrings.vehicleGraph.titleSpeed,
+          yAxisID: "y-axis-0",
           spanGaps: false,
           lineTension: 0,
           borderWidth: 1,
@@ -125,6 +132,20 @@ class TsGraphPanel extends Component {
           pointHoverBorderColor: "#EC407A",
           fill: true,
           data: this.state.speedData
+        },
+        {
+          label: this.props.localisedStrings.vehicleGraph.titleDelay,
+          yAxisID: "y-axis-1",
+          spanGaps: false,
+          lineTension: 0,
+          borderWidth: 1,
+          backgroundColor: 'rgba(230,74,25,0.4)',
+          borderColor: 'rgba(230,74,25,1)',
+          pointRadius: 2,
+          pointHoverBackgroundColor: "rgba(244,143,177,1)",
+          pointHoverBorderColor: "#EC407A",
+          fill: true,
+          data: this.state.delayData
         },
       ],
     };
@@ -168,10 +189,16 @@ class TsGraphPanel extends Component {
           }
         }],
         yAxes: [{
+          position: "left",
+          id: "y-axis-0",
           gridLines: {
             lineWidth: 1,
             color: "rgba(238,238,238,1)"
-          },
+          }
+        },
+        {
+          position: "right",
+          id: "y-axis-1",
         }]
       },
       pan: {

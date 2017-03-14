@@ -1,5 +1,5 @@
-const DummyVehicleLocationData = 
-[ 
+const DummyVehicleLocationData =
+[
     {
       'latitude' : 60.1704485,
       'longitude' : 24.9439185,
@@ -112,7 +112,8 @@ const DummyVehicleLocationData =
       'latitude' : 60.1744955,
       'longitude' : 24.9503215,
       'timestamp': '2017-02-03T07:02:19.000',
-      'speed': 55.0
+      'speed': 55.0,
+      'delay': 110
     }, {
       'latitude' : 60.1746295,
       'longitude' : 24.9503255,
@@ -129,7 +130,8 @@ const DummyVehicleLocationData =
       'latitude' : 60.1750245,
       'longitude' : 24.95035,
       'timestamp': '2017-02-03T07:02:32.000',
-      'speed': 55.0
+      'speed': 55.0,
+      'delay': 70
     }, {
       'latitude' : 60.1758155,
       'longitude' : 24.9502155,
@@ -224,12 +226,14 @@ const DummyVehicleLocationData =
       'latitude' : 60.1823485,
       'longitude' : 24.9565855,
       'timestamp': '2017-02-03T07:04:04.000',
-      'speed': 55.0
+      'speed': 55.0,
+      'delay': '-175'
     }, {
       'latitude' : 60.1825435,
       'longitude' : 24.9569885,
       'timestamp': '2017-02-03T07:04:05.000',
-      'speed': 55.0
+      'speed': 55.0,
+      'delay': '-175'
     }, {
       'latitude' : 60.1825435,
       'longitude' : 24.9569885,
