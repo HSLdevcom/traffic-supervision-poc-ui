@@ -167,7 +167,7 @@ class TsGraphPanel extends Component {
         }
       },
       legend:{
-       display:false
+       display:true
       },
       scales: {
         xAxes: [{
